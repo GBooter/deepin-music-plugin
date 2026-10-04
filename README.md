@@ -26,7 +26,7 @@ make -C build-release -j8
 # output: dist/deepin-music-online-lyric_<version>_amd64.deb
 ```
 
-Install with: `sudo apt install ./dist/deepin-music-online-lyric_7.0.68_amd64.deb`
+Install with: `sudo apt install ./dist/deepin-music-online-lyric_<version>_amd64.deb`
 
 The script already handles app-store requirements: all mandatory control
 fields, lowercase package name, dependencies auto-derived from the binary's
@@ -47,9 +47,18 @@ Uninstall: `./tools/install-local.sh build-release --uninstall`
 > `./tools/package-deb-manual.sh build-release dist`, but on immutable target
 > machines the user-level install above remains the reliable path.
 
+### Usage
+
+1. **Auto download**: while playing a song, if no same-name `.lrc` exists in its
+   folder, the app queries online and saves it there; if the folder is not
+   writable, it falls back to `~/.cache/deepin/deepin-music-online-lyric/lyrics/`.
+2. **Manual search**: open the lyrics panel and click **Search Lyrics** (top-right),
+   search keywords in the dialog, switch between Kugou / NetEase / LRCLIB results
+   and preview them, then click **Apply** to write the `.lrc` into the current song's folder.
+
 ### Dependencies
 
-### Build dependencies
+#### Build dependencies
 
 _The **master** branch is current development branch, build dependencies may changes without update README.md, refer to `./debian/control` for a working build depends list_
 
@@ -61,12 +70,15 @@ _The **master** branch is current development branch, build dependencies may cha
 * libdtk6core-bin
 * libdtk6gui-dev
 * libicu-dev
+* libssl-dev
+* zlib1g-dev
 * libmpris-qt6-dev
 * libtag1-dev
 * libxtst-dev
 * libvlc-dev
 * libvlccore-dev
 * libsdl2-dev
+* libsdl1.2debian
 * Qt6 with modules:
   - qt6-svg-dev
   - qt6-multimedia-dev
@@ -81,10 +93,13 @@ _The **master** branch is current development branch, build dependencies may cha
   - libdtk6gui-dev
   - libdtk6core-bin
 
-### Runtime dependencies
+#### Runtime dependencies
 
 * libvlc5
 * vlc-plugin-base
+* libdtk6declarative
+* qml6-module-qt-labs-platform
+* libqt6sql6-sqlite
 * gstreamer1.0-fluendo-mp3
 * gstreamer1.0-libav
 * gstreamer1.0-plugins-base
@@ -95,42 +110,7 @@ _The **master** branch is current development branch, build dependencies may cha
 * gvfs-bin
 * libuchardet0
 * libmpris-qt6
-
-## Installation
-
-### Build from source code
-
-1. Make sure you have installed all dependencies.
-
-_Package name may be different between distros, if deepin-music is available from your distro, check the packaging script delivered from your distro is a better idea._
-
-Assume you are using [Deepin](https://distrowatch.com/table.php?distribution=deepin) or other debian-based distro which got deepin-music delivered:
-
-``` shell
-$ apt build-dep deepin-music
-```
-
-2. Build:
-
-```
-$ cd deepin-music
-$ mkdir Build
-$ cd Build
-$ cmake ..
-$ make
-```
-
-3. Install:
-
-```
-$ sudo make install
-```
-
-The executable binary file could be found at `/usr/bin/deepin-music`
-
-## Usage
-
-Execute `deepin-music`
+* libsdl1.2debian
 
 ## Getting help
 
@@ -149,4 +129,4 @@ We encourage you to report issues and contribute changes
 
 ## License
 
-deepin-music is licensed under [GPL-3.0-or-later](LICENSE).
+deepin-music-online-lyric is licensed under [GPL-3.0-or-later](LICENSE).

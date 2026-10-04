@@ -63,12 +63,15 @@ _The **master** branch is current development branch, build dependencies may cha
 * libdtk6core-bin
 * libdtk6gui-dev
 * libicu-dev
+* libssl-dev
+* zlib1g-dev
 * libmpris-qt6-dev
 * libtag1-dev
 * libxtst-dev
 * libvlc-dev
 * libvlccore-dev
 * libsdl2-dev
+* libsdl1.2debian
 * Qt6 with modules:
   - qt6-svg-dev
   - qt6-multimedia-dev
@@ -87,6 +90,9 @@ _The **master** branch is current development branch, build dependencies may cha
 
 * libvlc5
 * vlc-plugin-base
+* libdtk6declarative
+* qml6-module-qt-labs-platform
+* libqt6sql6-sqlite
 * gstreamer1.0-fluendo-mp3
 * gstreamer1.0-libav
 * gstreamer1.0-plugins-base
@@ -97,42 +103,7 @@ _The **master** branch is current development branch, build dependencies may cha
 * gvfs-bin
 * libuchardet0
 * libmpris-qt6
-
-## 安装
-
-### 构建源码
-
-1. Make sure you have installed all dependencies.
-
-_Package name may be different between distros, if deepin-music is available from your distro, check the packaging script delivered from your distro is a better idea._
-
-Assume you are using [Deepin](https://distrowatch.com/table.php?distribution=deepin) or other debian-based distro which got deepin-music delivered:
-
-``` shell
-$ apt build-dep deepin-music
-```
-
-2. Build:
-
-```
-$ cd deepin-music
-$ mkdir Build
-$ cd Build
-$ cmake ..
-$ make
-```
-
-3. Install:
-
-```
-$ sudo make install
-```
-
-The executable binary file could be found at `/usr/bin/deepin-music`
-
-## 用途
-
-Execute `deepin-music`
+* libsdl1.2debian
 
 ## 帮助
 
@@ -151,4 +122,4 @@ We encourage you to report issues and contribute changes
 
 ## 协议
 
-deepin-music 根据 [GPL-3.0-or-later]（许可证）获得许可.
+deepin-music-online-lyric 根据 [GPL-3.0-or-later]（许可证）获得许可.
