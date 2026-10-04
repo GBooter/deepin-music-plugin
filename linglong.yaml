@@ -1,0 +1,79 @@
+# SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+version: "1"
+
+package:
+  # 以独立应用身份发布：id/name 与系统自带 deepin-music 不同，二者可并存不冲突。
+  # 显示名 Deepin音乐-V2。
+  id: org.deepin.music.online.lyric
+  name: "deepin-music-online-lyric"
+  # 7.0.68 为上游版本（同 debian/changelog 首行，会被 build 段提取为 APP_VERSION）；
+  # 末尾 .2 是 linglong 构建修订号。
+  version: 7.0.68.2
+  kind: app
+  description: |
+    Deepin音乐-V2（deepin-music-online-lyric）在线歌词增强版，专为 deepin 操作系统打造的音乐播放器，
+    界面简洁优雅，提供本地音乐管理与播放体验。
+    本版本内置在线歌词功能：播放时自动匹配当前歌曲歌词，也可通过搜索窗口手动查找，
+    聚合酷狗、网易云、LRCLIB 三大歌词源，支持 LRC 逐行滚动与逐字（卡拉OK）歌词、本地保存，
+    让每一首歌都能轻松找到配套歌词。
+    A music player for deepin OS with built-in online lyrics support
+    (auto-matching, multi-source search and one-click apply).
+
+base: org.deepin.base/25.2.2
+# 移除冗余的 webengine 运行时：本工程未使用 Qt WebEngine（CMake 仅依赖 Core/Widgets/Quick/Svg/DBus）。
+# 改用 dtk 运行时提供 Qt6/DTK6 开发与运行库（含 dtk6declarative，本地仓库版本 25.2.1.5）。
+# 注：若运行报 Failed to initialize graphics backend for OpenGL，说明仍缺 GL 依赖，
+# 应改由 base 或专用 GL 运行时提供，而非退回 webengine。
+runtime: org.deepin.runtime.dtk/6.7.0
+
+command:
+  - deepin-music-online-lyric
+
+# 在线歌词需要访问网络（网易云/酷狗/LRCLIB）
+permissions:
+  - network
+
+build: |
+  # 修改路径
+  sed -i "s|/usr|$PREFIX|g" src/libdmusic/CMakeLists.txt
+
+  # 构建
+  VERSION=$(head -1 debian/changelog | awk -F'[()]' '{print $2}')
+  cmake -B build \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=${PREFIX} \
+      -DCMAKE_INSTALL_LIBDIR=${PREFIX}/lib/${TRIPLET} \
+      -DAPP_VERSION=${VERSION} \
+      -DVERSION=${VERSION}
+  cmake --build build -j`nproc`
+  cmake --build build --target install > install.log 2>&1
+  # update for libdmusic.so
+  ldconfig -C "$LINGLONG_LD_SO_CACHE"
+
+buildext:
+  apt:
+    build_depends:
+      - cmake
+      - pkg-config
+      - libavutil-dev
+      - libavcodec-dev
+      - libavformat-dev
+      - libicu-dev
+      - libssl-dev
+      - zlib1g-dev
+      - libmpris-qt6-dev
+      - libtag1-dev
+      - libvlc-dev
+      - libvlccore-dev
+      - libsdl2-dev
+    depends:
+      - libvlc5
+      - libvlccore9
+      - vlc-plugin-base
+      - libsdl2-2.0-0
+      - libtag1v5
+      - libmpris-qt6
+      - libavcodec60

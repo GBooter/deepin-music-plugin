@@ -1,0 +1,45 @@
+*.pyc
+.#*
+*.mo
+*.pyo
+*.py#
+*po~
+*INFO#
+*.sw*
+*.user
+*.qm
+build/
+dist/
+build-local/
+.vscode
+# 只忽略 linglong 的构建/缓存产物：overlayfs 层含大量断链符号链接，会阻塞归档与入库。
+# linglong/ 下的打包脚本（entry.sh / buildext.sh / depends.yaml）与 linglong.yaml 需要入库。
+linglong/output/
+linglong/overlay/
+linglong/cache/
+obj-x86_64-linux-gnu/
+# debian 打包中间产物：可再生，且 dh_strip 生成的 dbgsym 包里含断链符号链接，
+# 会导致图形界面压缩/归档时报「指向的源文件不存在」
+debian/.debhelper/
+debian/files
+debian/*.substvars
+debian/*.debhelper.log
+.specstory
+.cursorindexingignore
+.npm-cache/
+.cursor/
+.codegraph/
+.trellis/
+AGENTS.md
+
+# 助手工作数据目录（健康检查报告、项目记忆）——不属于项目源码
+.workbuddy/
+# 源码快照目录（git 不可用期间的临时版本控制）
+_snapshots/
+
+# ===== 额外构建产物（本仓库特有，补全上面遗漏的大目录）=====
+build-release/
+build-runtimecheck/
+_toolchain/
+install.log
+report/

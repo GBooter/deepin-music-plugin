@@ -1,0 +1,137 @@
+// SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+#include "musicsettings.h"
+
+#include <DSettingsOption>
+
+#include <QFile>
+#include <QFileInfo>
+#include <QDir>
+#include <QImage>
+#include <QCoreApplication>
+#include <QDebug>
+
+#include <qsettingbackend.h>
+
+#include "global.h"
+#include "util/log.h"
+
+MusicSettings::MusicSettings(QObject *parent) :
+    QObject(parent)
+{
+    qCDebug(dmMusic) << "Initializing MusicSettings";
+    init();
+}
+
+MusicSettings::~MusicSettings()
+{
+    qCDebug(dmMusic) << "Destroying MusicSettings";
+    if (m_settings != nullptr) {
+        qCDebug(dmMusic) << "Syncing and cleaning up settings";
+        m_settings->sync();
+        qApp->processEvents();
+        delete m_settings;
+        m_settings = nullptr;
+        qCDebug(dmMusic) << "Settings cleanup completed";
+    }
+    // backend 不能交给 QObject 父子关系管理（parent 必须是 DSettings 会阻断
+    // DTK 内部的 moveToThread，见头文件注释），故在此显式释放。
+    if (m_backend) {
+        delete m_backend;
+        m_backend = nullptr;
+    }
+}
+
+void MusicSettings::init()
+{
+    qCDebug(dmMusic) << "Initializing MusicSettings";
+    qCDebug(dmMusic) << "Loading settings from JSON file";
+    m_settings = Dtk::Core::DSettings::fromJsonFile(":/data/music-settings.json");
+    if (m_settings.isNull()) {
+        qCCritical(dmMusic) << "Failed to load settings from JSON file";
+        return;
+    }
+    auto configFilepath = DmGlobal::configPath() + "/config.ini";
+    qCDebug(dmMusic) << "Setting config backend to:" << configFilepath;
+    // 注意：第二个参数必须留空（不能传 m_settings 作 parent）。
+    // DTK 的 DSettings::setBackend() 会把 backend moveToThread 到内部 worker，
+    // 而 QObject::moveToThread() 对「有 parent」的对象直接拒绝执行：
+    //   QObject::moveToThread: Cannot move objects with a parent
+    // 后果是 backend 滞留在创建线程，跨线程 set/get 时会死锁并刷
+    //   QMetaMethod::invoke: Dead lock detected in BlockingQueuedConnection:
+    //   Receiver is Dtk::Core::QSettingBackend
+    // 生命周期改由 MusicSettings 成员 m_backend 持有（见 musicsettings.h）。
+    m_backend = new Dtk::Core::QSettingBackend(configFilepath);
+    m_settings->setBackend(m_backend);
+    qCDebug(dmMusic) << "Settings backend initialized successfully";
+}
+
+void MusicSettings::ensureDefaultCover()
+{
+    auto coverPath = DmGlobal::cachePath() + "/images/default_cover.png";
+    if (!QFile::exists(coverPath)) {
+        QDir().mkpath(DmGlobal::cachePath() + "/images");
+        qCDebug(dmMusic) << "Creating default cover image";
+        QImage defaultImg(":/data/default_cover.png");
+        defaultImg = defaultImg.scaled(430, 430, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        if (!defaultImg.save(coverPath)) {
+            qCWarning(dmMusic) << "Failed to save default cover image";
+        } else {
+            qCDebug(dmMusic) << "Successfully saved default cover image to:" << coverPath;
+        }
+    }
+}
+
+QPointer<Dtk::Core::DSettings> MusicSettings::settings()
+{
+    if (m_settings.isNull()) {
+        qCWarning(dmMusic) << "Settings pointer is null";
+    }
+    return m_settings;
+}
+
+void MusicSettings::sync()
+{
+    if (!m_settings.isNull()) {
+        qCDebug(dmMusic) << "Syncing settings to disk";
+        m_settings->sync();
+    } else {
+        qCWarning(dmMusic) << "Cannot sync - settings is null";
+    }
+}
+
+void MusicSettings::reset()
+{
+    if (!m_settings.isNull()) {
+        qCDebug(dmMusic) << "Resetting settings to defaults";
+        m_settings->reset();
+    } else {
+        qCWarning(dmMusic) << "Cannot reset - settings is null";
+    }
+}
+
+QVariant MusicSettings::value(const QString &key)
+{
+    if (m_settings.isNull()) {
+        qCWarning(dmMusic) << "Cannot get value - settings is null, key:" << key;
+        return QVariant();
+    }
+    qCDebug(dmMusic) << "Getting setting value for key:" << key;
+    return m_settings->value(key);
+}
+
+void MusicSettings::setValue(const QString &key, const QVariant &value)
+{
+    if (m_settings.isNull()) {
+        qCWarning(dmMusic) << "Cannot set value - settings is null, key:" << key;
+        return;
+    }
+    if (m_settings->value(key) != value) {
+        qCDebug(dmMusic) << "Setting value for key:" << key << "value:" << value;
+        m_settings->setOption(key, value);
+    } else {
+        qCDebug(dmMusic) << "Value unchanged for key:" << key << "value:" << value;
+    }
+}

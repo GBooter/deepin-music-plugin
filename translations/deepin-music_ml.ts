@@ -1,0 +1,1490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ml" sourcelanguage="en_US">
+<context>
+    <name>AlbumDefaultPage</name>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumDefaultPage.qml" line="37"/>
+        <source>Add Songs</source>
+        <translation>ഗാനങ്ങൾ ചേർക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumDefaultPage.qml" line="45"/>
+        <source>Open Folders</source>
+        <translation>ഫോൾഡറുകൾ തുറക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumDefaultPage.qml" line="61"/>
+        <source>Drag music files here or</source>
+        <translation>മ്യൂസിക് ഫയലുകൾ ഇവിടെ കളിച്ചു വെക്കുക അല്ലെങ്കിൽ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumDefaultPage.qml" line="65"/>
+        <source> scan the Music directory</source>
+        <translation>മ്യൂസിക് ഡയറക്ടറി സ്കാൻ ചെയ്യുക</translation>
+    </message>
+</context>
+<context>
+    <name>AlbumGridDelegate</name>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumGridDelegate.qml" line="116"/>
+        <source>1 song</source>
+        <translation>1 ഗാനം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumGridDelegate.qml" line="116"/>
+        <source>%1 songs</source>
+        <translation>%1 ഗാനങ്ങൾ</translation>
+    </message>
+</context>
+<context>
+    <name>AlbumListDelegate</name>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumListDelegate.qml" line="106"/>
+        <source>%1</source>
+        <translation>%1</translation>
+    </message>
+</context>
+<context>
+    <name>AlbumListView</name>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumListView.qml" line="33"/>
+        <source>Album</source>
+        <translation>ആൽബം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumListView.qml" line="38"/>
+        <source>Artist</source>
+        <translation>ആർട്ടിസ്റ്റ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumListView.qml" line="43"/>
+        <source>Tracks</source>
+        <translation>ട്രാക്കുകൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumListView.qml" line="48"/>
+        <source>Date added</source>
+        <translation>സമയം ചേർക്കപ്പെട്ടത്</translation>
+    </message>
+</context>
+<context>
+    <name>AlbumMoreMenu</name>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/AlbumMoreMenu.qml" line="20"/>
+        <source>View details</source>
+        <translation>ഡിട്ടേൽസ് കാണുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/AlbumMoreMenu.qml" line="28"/>
+        <source>Play all</source>
+        <translation>എല്ലാവരും പ്ലെയ്‌ക്ക് ചെയ്യുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/AlbumMoreMenu.qml" line="36"/>
+        <source>Add to</source>
+        <translation>ചേർക്കുക</translation>
+    </message>
+</context>
+<context>
+    <name>AlbumSublist</name>
+    <message>
+        <location filename="../src/music-player/musicsublist/AlbumSublist.qml" line="36"/>
+        <source>Title</source>
+        <translation>പേര്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicsublist/AlbumSublist.qml" line="41"/>
+        <source>Artist</source>
+        <translation>ആർട്ടിസ്റ്റ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicsublist/AlbumSublist.qml" line="46"/>
+        <source>Duration</source>
+        <translation>ഉറുമ്പ്</translation>
+    </message>
+</context>
+<context>
+    <name>AlbumSublistDelegate</name>
+    <message>
+        <location filename="../src/music-player/musicsublist/AlbumSublistDelegate.qml" line="196"/>
+        <source>My Favorites</source>
+        <translation>എന്റെ പ്രിയപ്പെട്ടവ</translation>
+    </message>
+</context>
+<context>
+    <name>AlbumSublistView</name>
+    <message>
+        <location filename="../src/music-player/musicsublist/AlbumSublistView.qml" line="55"/>
+        <source>Title</source>
+        <translation>പേര്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicsublist/AlbumSublistView.qml" line="60"/>
+        <source>Artist</source>
+        <translation>ആർട്ടിസ്റ്റ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicsublist/AlbumSublistView.qml" line="66"/>
+        <source>Duration</source>
+        <translation>ഉറുമ്പ്</translation>
+    </message>
+</context>
+<context>
+    <name>AlbumView</name>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumView.qml" line="54"/>
+        <source>Albums</source>
+        <translation>ആൽബങ്ങൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/albumlist/AlbumView.qml" line="55"/>
+        <source>%1 albums - %2 songs</source>
+        <translation>%1 ആൽബങ്ങൾ - %2 ഗാനങ്ങൾ</translation>
+    </message>
+</context>
+<context>
+    <name>AllMusicDefaultPage</name>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicDefaultPage.qml" line="69"/>
+        <source>Add Songs</source>
+        <translation>ഗാനങ്ങൾ ചേർക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicDefaultPage.qml" line="77"/>
+        <source>Open Folders</source>
+        <translation>ഫോൾഡറുകൾ തുറക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicDefaultPage.qml" line="92"/>
+        <source>Drag music files here or</source>
+        <translation>മ്യൂസിക് ഫയലുകൾ ഇവിടെ കളിച്ചു വെക്കുക അല്ലെങ്കിൽ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicDefaultPage.qml" line="131"/>
+        <source>Your favorite songs will be displayed here</source>
+        <translation>നിങ്ങുടെ പ്രിയപ്പെട്ട ഗാനങ്ങൾ ഇവിടെ പ്രദർശിപ്പിക്കപ്പെടും</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicDefaultPage.qml" line="143"/>
+        <source>Click “</source>
+        <translation>ക്ലിക്ക് ചെയ്യുക “</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicDefaultPage.qml" line="154"/>
+        <source>” to add a song to My Favorites</source>
+        <translation>” എന്റെ പ്രിയപ്പെട്ടവയിലേക്ക് ഒരു ഗാനം ചേർക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicDefaultPage.qml" line="185"/>
+        <source>No songs yet. Click “</source>
+        <translation>ഗാനങ്ങൾ ഇതുവരെ ഇല്ല. ക്ലിക്ക് ചെയ്യുക “</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicDefaultPage.qml" line="196"/>
+        <source>” to add songs to the playlist</source>
+        <translation>സംഗീതം പ്ലെയിസ്റ്റിലേക്ക് ചേർക്കുവാൻ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicDefaultPage.qml" line="96"/>
+        <source> scan the Music directory</source>
+        <translation>മ്യൂസിക് ഡയറക്ടറി സ്കാൻ ചെയ്യുക</translation>
+    </message>
+</context>
+<context>
+    <name>AllMusicList</name>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicList.qml" line="17"/>
+        <source>All Songs</source>
+        <translation>എല്ലാ സംഗീതങ്ങളും</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicList.qml" line="30"/>
+        <source>1 song</source>
+        <translation>1 സംഗീതം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicList.qml" line="30"/>
+        <source>%1 songs</source>
+        <translation>%1 സംഗീതങ്ങൾ</translation>
+    </message>
+</context>
+<context>
+    <name>AllMusicListDelegate</name>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicListDelegate.qml" line="214"/>
+        <source>My Favorites</source>
+        <translation>എന്റെ ഇഷ്ടപ്പെട്ടവ</translation>
+    </message>
+</context>
+<context>
+    <name>AllMusicListView</name>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicListView.qml" line="79"/>
+        <source>Title</source>
+        <translation>പേര്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicListView.qml" line="85"/>
+        <source>Artist</source>
+        <translation>സംഗീതകാരൻ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicListView.qml" line="91"/>
+        <source>Album</source>
+        <translation>ആൽബം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicListView.qml" line="97"/>
+        <source>Duration</source>
+        <translation>ദൈർഘ്യം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicList/AllMusicListView.qml" line="462"/>
+        <source>Locate current song</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ArtistDefaultPage</name>
+    <message>
+        <location filename="../src/music-player/singerlist/ArtistDefaultPage.qml" line="38"/>
+        <source>Add Songs</source>
+        <translation>സംഗീതം ചേർക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/singerlist/ArtistDefaultPage.qml" line="46"/>
+        <source>Open Folders</source>
+        <translation>ഫോൾഡറുകൾ തുറക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/singerlist/ArtistDefaultPage.qml" line="62"/>
+        <source>Drag music files here or</source>
+        <translation>സംഗീത ഫയലുകൾ ഇവിടെ കളിച്ചു വിടുക അല്ലെങ്കിൽ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/singerlist/ArtistDefaultPage.qml" line="66"/>
+        <source> scan the Music directory</source>
+        <translation>മ്യൂസിക് ഡയറക്ടറി സ്കാൻ ചെയ്യുക</translation>
+    </message>
+</context>
+<context>
+    <name>ArtistGridDelegate</name>
+    <message>
+        <location filename="../src/music-player/singerlist/ArtistGridDelegate.qml" line="147"/>
+        <source>1 song</source>
+        <translation>1 സംഗീതം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/singerlist/ArtistGridDelegate.qml" line="147"/>
+        <source>%1 songs</source>
+        <translation>%1 സംഗീതങ്ങൾ</translation>
+    </message>
+</context>
+<context>
+    <name>ArtistMoreMenu</name>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/ArtistMoreMenu.qml" line="18"/>
+        <source>View details</source>
+        <translation>ഇതിനെക്കുറിച്ച് കാണുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/ArtistMoreMenu.qml" line="26"/>
+        <source>Play all</source>
+        <translation>എല്ലാവയും പ്ലെയിക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/ArtistMoreMenu.qml" line="34"/>
+        <source>Add to</source>
+        <translation>ചേർക്കുക</translation>
+    </message>
+</context>
+<context>
+    <name>ArtistSublistDelegate</name>
+    <message>
+        <location filename="../src/music-player/musicsublist/ArtistSublistDelegate.qml" line="167"/>
+        <source>My Favorites</source>
+        <translation>എന്റെ ഇഷ്ടപ്പെട്ടവ</translation>
+    </message>
+</context>
+<context>
+    <name>ArtistSublistView</name>
+    <message>
+        <location filename="../src/music-player/musicsublist/ArtistSublistView.qml" line="59"/>
+        <source>Title</source>
+        <translation>പേര്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicsublist/ArtistSublistView.qml" line="65"/>
+        <source>Album</source>
+        <translation>ആൽബം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicsublist/ArtistSublistView.qml" line="70"/>
+        <source>Duration</source>
+        <translation>ദൈർഘ്യം</translation>
+    </message>
+</context>
+<context>
+    <name>ArtistView</name>
+    <message>
+        <location filename="../src/music-player/singerlist/ArtistView.qml" line="54"/>
+        <source>Artists</source>
+        <translation>സംഗീതകാരന്മാർ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/singerlist/ArtistView.qml" line="55"/>
+        <source>%1 artists - %2 songs</source>
+        <translation>%1 സംഗീതകാരന്മാർ - %2 സംഗീതങ്ങൾ</translation>
+    </message>
+</context>
+<context>
+    <name>CDRemovedDialog</name>
+    <message>
+        <location filename="../src/music-player/dialogs/CDRemovedDialog.qml" line="44"/>
+        <source>The CD has been removed</source>
+        <translation>സിഡി നീങ്കിയിരിക്കുന്നു</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/CDRemovedDialog.qml" line="48"/>
+        <source>Cancel</source>
+        <translation>റദ്ദാക്കുക</translation>
+    </message>
+</context>
+<context>
+    <name>CloseConfirmDialog</name>
+    <message>
+        <location filename="../src/music-player/dialogs/CloseConfirmDialog.qml" line="48"/>
+        <source>Please choose your action</source>
+        <translation>നിങ്ങൾക്ക് പ്രവർത്തനം തിരഞ്ഞെടുക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/CloseConfirmDialog.qml" line="62"/>
+        <source>Minimize to system tray</source>
+        <translation>സിസ്റ്റം ട്രെയിലിലേക്ക് കുറയ്ക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/CloseConfirmDialog.qml" line="74"/>
+        <source>Exit</source>
+        <translation>പുറത്തേക്ക് കടക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/CloseConfirmDialog.qml" line="85"/>
+        <source>Do not ask again</source>
+        <translation>പുനഃപ്രാപ്തി ചെയ്യരുത്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/CloseConfirmDialog.qml" line="101"/>
+        <source>Cancel</source>
+        <translation>റദ്ദാക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/CloseConfirmDialog.qml" line="109"/>
+        <source>Confirm</source>
+        <translation>ഉറപ്പാക്കുക</translation>
+    </message>
+</context>
+<context>
+    <name>CurrentPlayList</name>
+    <message>
+        <location filename="../src/music-player/playlist/CurrentPlayList.qml" line="97"/>
+        <source>Play queue</source>
+        <translation>പ്ലെയി ക്വിയ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/playlist/CurrentPlayList.qml" line="114"/>
+        <source>1 song</source>
+        <translation>1 സംഗീതം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/playlist/CurrentPlayList.qml" line="114"/>
+        <source>%1 songs</source>
+        <translation>%1 സംഗീതങ്ങൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/playlist/CurrentPlayList.qml" line="128"/>
+        <source>Empty</source>
+        <translation>കാലിയാക്കുക</translation>
+    </message>
+</context>
+<context>
+    <name>CurrentPlayListDelegate</name>
+    <message>
+        <location filename="../src/music-player/playlist/CurrentPlayListDelegate.qml" line="124"/>
+        <source>My Favorites</source>
+        <translation>എന്റെ ഇഷ്ടാഭിമാനങ്ങൾ</translation>
+    </message>
+</context>
+<context>
+    <name>CustomPlaylistModel</name>
+    <message>
+        <location filename="../src/music-player/musicbaseandsonglist/CustomPlaylistModel.qml" line="23"/>
+        <source>My Favorites</source>
+        <translation>എന്റെ ഇഷ്ടാഭിമാനങ്ങൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicbaseandsonglist/CustomPlaylistModel.qml" line="80"/>
+        <source>CD playlist</source>
+        <translation>സിഡി പ്ലെയ്യിസ്റ്റ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicbaseandsonglist/CustomPlaylistModel.qml" line="86"/>
+        <source>CD</source>
+        <translation>സിഡി</translation>
+    </message>
+</context>
+<context>
+    <name>DeleteLocalDialog</name>
+    <message>
+        <location filename="../src/music-player/dialogs/DeleteLocalDialog.qml" line="47"/>
+        <source>Are you sure you want to delete %1?</source>
+        <translation>നിങ്ങൾ %1 അപ്പാർട്ട് ചെയ്യാൻ തീരുമാനിച്ചിരിക്കുന്നു എന്ന് ഉറപ്പുവരുത്തിയാലോ?</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/DeleteLocalDialog.qml" line="49"/>
+        <source>Are you sure you want to delete the selected %1 songs?</source>
+        <translation>നിങ്ങൾ തിരഞ്ഞെടുത്ത %1 സംഗീതങ്ങൾ അപ്പാർട്ട് ചെയ്യാൻ തീരുമാനിച്ചിരിക്കുന്നു എന്ന് ഉറപ്പുവരുത്തിയാലോ?</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/DeleteLocalDialog.qml" line="58"/>
+        <source>The song files contained will also be deleted</source>
+        <translation>പ്ലെയ്യിസ്റ്റിൽ ഉൾപ്പെട്ട സംഗീത ഫയലുകൾക്കും ഒരുപോലെ അപ്പാർട്ട് ചെയ്യും</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/DeleteLocalDialog.qml" line="66"/>
+        <source>Delete</source>
+        <translation>നീക്കം ചെയ്യുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/DeleteLocalDialog.qml" line="78"/>
+        <source>Cancel</source>
+        <translation>റദ്ദാക്കുക</translation>
+    </message>
+</context>
+<context>
+    <name>DeleteSonglistDialog</name>
+    <message>
+        <location filename="../src/music-player/dialogs/DeleteSonglistDialog.qml" line="53"/>
+        <source>Are you sure you want to remove %1?</source>
+        <translation>നിങ്ങൾ %1 അപ്പാർട്ട് ചെയ്യാൻ തീരുമാനിച്ചിരിക്കുന്നു എന്ന് ഉറപ്പുവരുത്തിയാലോ?</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/DeleteSonglistDialog.qml" line="55"/>
+        <source>Are you sure you want to remove the selected %1 songs?</source>
+        <translation>നിങ്ങൾ തിരഞ്ഞെടുത്ത %1 സംഗീതങ്ങൾ അപ്പാർട്ട് ചെയ്യാൻ തീരുമാനിച്ചിരിക്കുന്നു എന്ന് ഉറപ്പുവരുത്തിയാലോ?</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/DeleteSonglistDialog.qml" line="57"/>
+        <source>Are you sure you want to delete this playlist?</source>
+        <translation>നിങ്ങൾ ഈ പ്ലെയ്യിസ്റ്റ് അപ്പാർട്ട് ചെയ്യാൻ തീരുമാനിച്ചിരിക്കുന്നു എന്ന് ഉറപ്പുവരുത്തിയാലോ?</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/DeleteSonglistDialog.qml" line="68"/>
+        <source>Remove</source>
+        <translation>അപ്പാർട്ട് ചെയ്യുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/DeleteSonglistDialog.qml" line="68"/>
+        <source>Delete</source>
+        <translation>നീക്കം ചെയ്യുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/DeleteSonglistDialog.qml" line="84"/>
+        <source>Cancel</source>
+        <translation>റദ്ദാക്കുക</translation>
+    </message>
+</context>
+<context>
+    <name>EqualizerDialog</name>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="16"/>
+        <source>Custom</source>
+        <translation>കസ്റ്റം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="17"/>
+        <source>Monophony</source>
+        <translation>ഒന്നിരിക്കൽ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="18"/>
+        <source>Classical</source>
+        <translation>ക്ലാസിക്കൽ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="19"/>
+        <source>Club</source>
+        <translation>ക്ലബ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="20"/>
+        <source>Dance</source>
+        <translation>ഡാൻസ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="21"/>
+        <source>Full Bass</source>
+        <translation>പൂർണ്ണ ബാസ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="22"/>
+        <source>Full Bass and Treble</source>
+        <translation>പൂർണ്ണ ബാസ് ആൻഡ് ട്രെബ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="23"/>
+        <source>Full Treble</source>
+        <translation>പൂർണ്ണ ട്രെബ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="24"/>
+        <source>Headphones</source>
+        <translation>ഹെഡ് പാൻഡ്സ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="25"/>
+        <source>Hall</source>
+        <translation>ഹാൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="26"/>
+        <source>Live</source>
+        <translation>ലൈവ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="27"/>
+        <source>Party</source>
+        <translation>പാർട്ടി</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="28"/>
+        <source>Pop</source>
+        <translation>പോപ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="29"/>
+        <source>Reggae</source>
+        <translation>റെഗ്ജീ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="30"/>
+        <source>Rock</source>
+        <translation>റോക്ക്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="31"/>
+        <source>Ska</source>
+        <translation>സ്ക്കാ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="32"/>
+        <source>Soft</source>
+        <translation>സോഫ്റ്റ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="33"/>
+        <source>Soft Rock</source>
+        <translation>സോഫ്റ്റ് റോക്ക്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="34"/>
+        <source>Techno</source>
+        <translation>ടെക്നോ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="117"/>
+        <source>Equalizer</source>
+        <translation>ഇവല്യേഷർ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="193"/>
+        <source>Save</source>
+        <translation>സൂക്ഷിക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="217"/>
+        <source>Reset</source>
+        <translation>പുനഃക്രമീകരിക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="328"/>
+        <source>Preamplifier</source>
+        <translation>പ്രീ അമ്പ്ലിഫയർ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/EqualizerDialog.qml" line="506"/>
+        <source>Sound Effects Saved</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FileDialog</name>
+    <message>
+        <location filename="../src/music-player/dialogs/FileDialog.qml" line="15"/>
+        <source>All Music</source>
+        <translation>എല്ലാ സംഗീതങ്ങളും</translation>
+    </message>
+</context>
+<context>
+    <name>ImportFailedDialog</name>
+    <message>
+        <location filename="../src/music-player/dialogs/ImportFailedDialog.qml" line="39"/>
+        <source>Import failed, no valid music file found</source>
+        <translation>ഇംപോർട്ട് പരാജയപ്പെട്ടു, സാധാരണ സംഗീത ഫയൽ കണ്ടു</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/ImportFailedDialog.qml" line="43"/>
+        <source>OK</source>
+        <translation>ഓ.കെ.</translation>
+    </message>
+</context>
+<context>
+    <name>ImportMenu</name>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/ImportMenu.qml" line="25"/>
+        <source>Play queue</source>
+        <translation>പ്ലേ ക്വിയ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/ImportMenu.qml" line="40"/>
+        <source>My favorites</source>
+        <translation>എന്റെ ഇഷ്ടങ്ങൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/ImportMenu.qml" line="49"/>
+        <source>Create new playlist</source>
+        <translation>പുതിയ പ്ലേ ലിസ്റ്റ് സൃഷ്ടിക്കു</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/ImportMenu.qml" line="52"/>
+        <source>New playlist</source>
+        <translation>പുതിയ പ്ലേ ലിസ്റ്റ്</translation>
+    </message>
+</context>
+<context>
+    <name>LyricPage</name>
+    <message>
+        <location filename="../src/music-player/lyric/LyricPage.qml" line="138"/>
+        <source>Artist</source>
+        <translation>ആർട്ടിസ്റ്റ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/lyric/LyricPage.qml" line="138"/>
+        <location filename="../src/music-player/lyric/LyricPage.qml" line="146"/>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/lyric/LyricPage.qml" line="146"/>
+        <source>Album</source>
+        <translation>ആൽബം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/lyric/LyricPage.qml" line="186"/>
+        <source>No lyrics found</source>
+        <translation>ലൈറ്റ് കണ്ടു</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/lyric/LyricPage.qml" line="196"/>
+        <source>Please put the lyric file (same name as the song) and the song file in the same folder</source>
+        <translation>സംഗീത ഫയൽ (സംഗീതത്തിന് തുല്ലുപേരുള്ളത്) ഉണ്ടാക്കുക എന്നും സംഗീത ഫയൽ ഒരേ ഫോൾഡറിൽ പ്ലേ ചെയ്യുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/lyric/LyricPage.qml" line="242"/>
+        <source>Search Lyrics</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>LyricSearchDialog</name>
+    <message>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="83"/>
+        <source>Search Lyrics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="114"/>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="126"/>
+        <source>Loading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="122"/>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="384"/>
+        <source>Select a result to preview lyrics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="160"/>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="176"/>
+        <source>No lyrics found</source>
+        <translation type="unfinished">ലൈറ്റ് കണ്ടു</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="167"/>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="182"/>
+        <source>Network error, please check your connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="198"/>
+        <source>Enter song name and artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="204"/>
+        <source>Search</source>
+        <translation type="unfinished">തിരയുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="236"/>
+        <source>Search Results</source>
+        <translation type="unfinished">സെർച്ച് റിസൾട്സ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="347"/>
+        <source>Lyrics Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="367"/>
+        <source>Simplify word-by-word lyrics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="402"/>
+        <source>Cancel</source>
+        <translation type="unfinished">റദ്ദാക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/LyricSearchDialog.qml" line="409"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainWindow</name>
+    <message>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="35"/>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="230"/>
+        <source>Music</source>
+        <translation>സംഗീതം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="244"/>
+        <source>Play/Pause</source>
+        <translation>പ്ലേ/പേസ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="249"/>
+        <source>Previous</source>
+        <translation>പഴയത്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="260"/>
+        <source>Next</source>
+        <translation>അടുത്തത്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="271"/>
+        <source>Exit</source>
+        <translation>പുറത്തേക്ക് കടക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="431"/>
+        <source>Already added to the playlist</source>
+        <translation>ഇത് പ്ലേ ലിസ്റ്റിൽ കഴിഞ്ഞ് ചേർത്തിട്ടുണ്ട്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="434"/>
+        <source>Added to &quot;%1&quot;</source>
+        <translation>എന്റെ ഇഷ്ടങ്ങൾ ചേർത്തിട്ടുണ്ട് &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="437"/>
+        <source>Removed from &quot;My Favorites&quot;</source>
+        <translation>എന്റെ ഇഷ്ടങ്ങളിൽ നിന്ന് നീക്കം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="440"/>
+        <source>A disc is connected</source>
+        <translation>ഒരു ഡിസ്ക് ഇതരസംഗതിയിൽ പുറത്ത്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="443"/>
+        <source>Sound Effects Saved</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="454"/>
+        <source>My Favorites</source>
+        <translation>എന്റെ ഇഷ്ടങ്ങൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/MainWindow.qml" line="482"/>
+        <source>All Songs</source>
+        <translation>എല്ലാ സംഗീതങ്ങളും</translation>
+    </message>
+</context>
+<context>
+    <name>MulitSelectMenu</name>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MulitSelectMenu.qml" line="19"/>
+        <source>Add to</source>
+        <translation>ചേർക്കു</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MulitSelectMenu.qml" line="28"/>
+        <source>Remove from playlist</source>
+        <translation>പ്ലേ ലിസ്റ്റിൽ നിന്ന് നീക്കം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MulitSelectMenu.qml" line="28"/>
+        <source>Remove from play queue</source>
+        <translation>പ്ലേ ക്വിയ് നിന്ന് നീക്കം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MulitSelectMenu.qml" line="35"/>
+        <source>Delete from local disk</source>
+        <translation>ലോക്കൽ ഡിസ്കിൽ നിന്ന് അപ്പോയിന്റ്</translation>
+    </message>
+</context>
+<context>
+    <name>MusicBaselistview</name>
+    <message>
+        <location filename="../src/music-player/musicbaseandsonglist/MusicBaselistview.qml" line="36"/>
+        <source>Library</source>
+        <translation>ലൈബ്രറി</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicbaseandsonglist/MusicBaselistview.qml" line="40"/>
+        <source>Albums</source>
+        <translation>ആൽബങ്ങൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicbaseandsonglist/MusicBaselistview.qml" line="41"/>
+        <source>Artists</source>
+        <translation>ആർട്ടിസ്റ്റുകൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicbaseandsonglist/MusicBaselistview.qml" line="42"/>
+        <source>All Songs</source>
+        <translation>എല്ലാ സംഗീതങ്ങളും</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicbaseandsonglist/MusicBaselistview.qml" line="47"/>
+        <source>Playlists</source>
+        <translation>പ്ലേ ലിസ്റ്റുകൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicbaseandsonglist/MusicBaselistview.qml" line="66"/>
+        <source>Create playlist</source>
+        <translation>പ്ലേ ലിസ്റ്റ് സൃഷ്ടിക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicbaseandsonglist/MusicBaselistview.qml" line="69"/>
+        <source>New playlist</source>
+        <translation>പുതിയ പ്ലേ ലിസ്റ്റ്</translation>
+    </message>
+</context>
+<context>
+    <name>MusicContentWindow</name>
+    <message>
+        <location filename="../src/music-player/mainwindow/MusicContentWindow.qml" line="22"/>
+        <source>My Favorites</source>
+        <translation>എന്റെ ഇഷ്ടങ്ങൾ</translation>
+    </message>
+</context>
+<context>
+    <name>MusicInfoDialog</name>
+    <message>
+        <location filename="../src/music-player/dialogs/MusicInfoDialog.qml" line="85"/>
+        <source>Title</source>
+        <translation>പേര്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/MusicInfoDialog.qml" line="94"/>
+        <source>Artist</source>
+        <translation>സംഗീത കലാകാരന്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/MusicInfoDialog.qml" line="100"/>
+        <source>Album</source>
+        <translation>ആൽബം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/MusicInfoDialog.qml" line="109"/>
+        <source>Type</source>
+        <translation>രക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/MusicInfoDialog.qml" line="115"/>
+        <source>Size</source>
+        <translation>വലുപ്പം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/MusicInfoDialog.qml" line="121"/>
+        <source>Duration</source>
+        <translation>ദൈർഘ്യം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/MusicInfoDialog.qml" line="128"/>
+        <source>Path</source>
+        <translation>പാത</translation>
+    </message>
+</context>
+<context>
+    <name>MusicMoreMenu</name>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MusicMoreMenu.qml" line="24"/>
+        <source>Pause</source>
+        <translation>സസ്പെൻഡ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MusicMoreMenu.qml" line="24"/>
+        <source>Play</source>
+        <translation>പ്ലേ ചെയ്യുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MusicMoreMenu.qml" line="44"/>
+        <source>Add to</source>
+        <translation>ചേർക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MusicMoreMenu.qml" line="52"/>
+        <source>Open in file manager</source>
+        <translation>ഫയൽ മാനേജർ ഉപയോഗിച്ച് തുറക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MusicMoreMenu.qml" line="62"/>
+        <source>Remove from playlist</source>
+        <translation>പ്ലേ ലിസ്റ്റിൽ നിന്ന് അകറ്റുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MusicMoreMenu.qml" line="62"/>
+        <source>Remove from play queue</source>
+        <translation>പ്ലേ ക്വിയിൽ നിന്ന് അകറ്റുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MusicMoreMenu.qml" line="72"/>
+        <source>Delete from local disk</source>
+        <translation>ലോക്കൽ ഡിസ്കിൽ നിന്ന് അകറ്റുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MusicMoreMenu.qml" line="79"/>
+        <source>Encoding</source>
+        <translation>എൻകോഡിംഗ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/MusicMoreMenu.qml" line="104"/>
+        <source>Song info</source>
+        <translation>ഗാനം വിവരങ്ങൾ</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../src/music-player/main.cpp" line="231"/>
+        <source>Music</source>
+        <translation>സംഗീതം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/main.cpp" line="236"/>
+        <source>Unknown album</source>
+        <translation>അപരിചിത ആൽബം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/main.cpp" line="236"/>
+        <source>Unknown artist</source>
+        <translation>അപരിചിത കലാകാരന്</translation>
+    </message>
+</context>
+<context>
+    <name>SearchResultDialog</name>
+    <message>
+        <location filename="../src/music-player/dialogs/SearchResultDialog.qml" line="68"/>
+        <source>Songs</source>
+        <translation>ഗാനങ്ങൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SearchResultDialog.qml" line="80"/>
+        <source>Artists</source>
+        <translation>കലാകാരന്മാർ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SearchResultDialog.qml" line="91"/>
+        <source>Albums</source>
+        <translation>ആൽബങ്ങൾ</translation>
+    </message>
+</context>
+<context>
+    <name>SearchResultWindow</name>
+    <message>
+        <location filename="../src/music-player/mainwindow/SearchResultWindow.qml" line="58"/>
+        <source>No search results</source>
+        <translation>ഫലങ്ങളൊന്നുമില്ല</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/SearchResultWindow.qml" line="95"/>
+        <source>Play All</source>
+        <translation type="unfinished">എല്ലാം പ്ലേ ചെയ്യുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/SearchResultWindow.qml" line="103"/>
+        <source>Search Results</source>
+        <translation>സെർച്ച് റിസൾട്സ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/SearchResultWindow.qml" line="108"/>
+        <source>%1 albums - %2 songs</source>
+        <translation>&apos;%1 ആൽബങ്ങൾ - %2 ഗാനങ്ങൾ&apos;</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/SearchResultWindow.qml" line="109"/>
+        <source>1 album - 1 song</source>
+        <translation>1 ആൽബം - 1 ഗാനം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/SearchResultWindow.qml" line="109"/>
+        <source>%1 album - %2 songs</source>
+        <translation>&apos;%1 ആൽബം - %2 ഗാനങ്ങൾ&apos;</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/SearchResultWindow.qml" line="127"/>
+        <source>Music</source>
+        <translation>സംഗീതം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/SearchResultWindow.qml" line="135"/>
+        <source>Artist</source>
+        <translation>കലാകാരന്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/SearchResultWindow.qml" line="131"/>
+        <source>Album</source>
+        <translation>ആൽബം</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDialog</name>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="41"/>
+        <source>Basic</source>
+        <translation>അടിസ്ഥാന</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="45"/>
+        <source>Play</source>
+        <translation>പ്ലേ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="54"/>
+        <source>Autoplay</source>
+        <translation>ആട്ടോപ്ലേ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="66"/>
+        <source>Remember playback position on exit</source>
+        <translation>പ്രവർത്തന സ്ഥലം വിട്ടുപോകുമ്പോൾ ഓർക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="79"/>
+        <source>Enable fade in/out</source>
+        <translation>ഫേഡ് ഇൻ/ഔട്ട് പ്രവർത്തനം പ്രവർത്തിപ്പിക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="91"/>
+        <source>Close Main Window</source>
+        <translation>പ്രാഥമിക വിൻഡോ അടച്ചു</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="104"/>
+        <source>Minimize to system tray</source>
+        <translation>സിസ്റ്റം ട്രേയിലേക്ക് കുറച്ച് ചെയ്യുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="111"/>
+        <source>Exit</source>
+        <translation>പുറത്തേക്ക് കടക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="118"/>
+        <source>Ask me always</source>
+        <translation>എന്നെ എപ്പോഴും ചോദിക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="148"/>
+        <source>Shortcuts</source>
+        <translation>ശേഖരങ്ങൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="169"/>
+        <source>Play/Pause</source>
+        <translation>പ്ലേ/പേസ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="212"/>
+        <source>Previous</source>
+        <translation>പഴയ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="256"/>
+        <source>Next</source>
+        <translation>അടുത്തത്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="301"/>
+        <source>Volume up</source>
+        <translation>വോള്യും മുകളിലേക്ക്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="346"/>
+        <source>Volume down</source>
+        <translation>വോള്യും താഴേക്ക്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="390"/>
+        <source>Favorite</source>
+        <translation>പ്രിയപ്പെട്ട</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="519"/>
+        <source>Cancel</source>
+        <translation>റദ്ദാക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="552"/>
+        <source>Replace</source>
+        <translation>മാറ്റിവയ്ക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="611"/>
+        <source>Restore Defaults</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/dialogs/SettingsDialog.qml" line="508"/>
+        <source>This shortcut key conflicts with [%1], click Replace to make this shortcut key take effect immediately</source>
+        <translation>ഈ ശേഖരം [%1] നോട് പ്രതികൂലമായി പ്രവർത്തിക്കുന്നു, ഇതിനെ പകരം ചെയ്യാൻ ക്ലിക്ക് ചെയ്യുക</translation>
+    </message>
+</context>
+<context>
+    <name>Shortcut</name>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="60"/>
+        <source>Play</source>
+        <translation>പ്ലേ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="61"/>
+        <source>Songs</source>
+        <translation>ഗാനങ്ങൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="62"/>
+        <source>Playlists</source>
+        <translation>പ്ലേലിസ്റ്റുകൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="63"/>
+        <source>Settings</source>
+        <translation>സംവിധാനങ്ങൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="70"/>
+        <source>Play/Pause</source>
+        <translation>പ്ലേ/പേസ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="71"/>
+        <source>Previous</source>
+        <translation>പഴയ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="72"/>
+        <source>Next</source>
+        <translation>അടുത്തത്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="73"/>
+        <source>Volume Up</source>
+        <translation>വോള്യും മുകളിലേക്ക്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="74"/>
+        <source>Volume Down</source>
+        <translation>വോള്യും താഴേക്ക്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="75"/>
+        <source>Mute</source>
+        <translation>മിറ്റ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="78"/>
+        <source>Favorite</source>
+        <translation>പ്രിയപ്പെട്ട</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="79"/>
+        <source>Unfavorite</source>
+        <translation>പ്രിയപ്പെട്ട അല്ല</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="80"/>
+        <source>Song info</source>
+        <translation>ഗാന വിവരം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="83"/>
+        <source>New playlist</source>
+        <translation>പുതിയ പ്ലേലിസ്റ്റ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="84"/>
+        <source>Add music</source>
+        <translation>മ്യൂസിക് ചേർക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="85"/>
+        <source>Rename playlist</source>
+        <translation>പ്ലേ ലിസ്റ്റ് പേര് മാറ്റുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="86"/>
+        <source>Remove from playlist</source>
+        <translation>പ്ലേ ലിസ്റ്റിൽ നിന്ന് അകറ്റുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="89"/>
+        <source>Help</source>
+        <translation>സഹായം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/util/shortcut.cpp" line="90"/>
+        <source>Display shortcuts</source>
+        <translation>ശേഖരം കാണിക്കുക</translation>
+    </message>
+</context>
+<context>
+    <name>Shortcuts</name>
+    <message>
+        <location filename="../src/music-player/allItems/Shortcuts.qml" line="51"/>
+        <source>New playlist</source>
+        <translation>പുതിയ പ്ലേ ലിസ്റ്റ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/allItems/Shortcuts.qml" line="120"/>
+        <source>My Favorites</source>
+        <translation>എന്റെ ഇഷ്ടപ്പെട്ടവ</translation>
+    </message>
+</context>
+<context>
+    <name>SidebarMenu</name>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/SidebarMenu.qml" line="26"/>
+        <source>Play</source>
+        <translation>പ്ലേ ചെയ്യുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/SidebarMenu.qml" line="33"/>
+        <source>Add songs</source>
+        <translation>ഗാനങ്ങൾ ചേർക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/SidebarMenu.qml" line="42"/>
+        <source>Rename</source>
+        <translation>പേര് മാറ്റുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/musicmousemenu/SidebarMenu.qml" line="56"/>
+        <source>Delete</source>
+        <translation>നീക്കം ചെയ്യുക</translation>
+    </message>
+</context>
+<context>
+    <name>SortMenu</name>
+    <message>
+        <location filename="../src/music-player/allItems/SortMenu.qml" line="29"/>
+        <source>CD playlist</source>
+        <translation>സിഡി പ്ലേ ലിസ്റ്റ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/allItems/SortMenu.qml" line="33"/>
+        <source>Custom</source>
+        <translation>കസ്റ്റം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/allItems/SortMenu.qml" line="34"/>
+        <location filename="../src/music-player/allItems/SortMenu.qml" line="41"/>
+        <location filename="../src/music-player/allItems/SortMenu.qml" line="46"/>
+        <source>Date added</source>
+        <translation>ചേർന്ന തീയതി</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/allItems/SortMenu.qml" line="37"/>
+        <location filename="../src/music-player/allItems/SortMenu.qml" line="47"/>
+        <source>Album</source>
+        <translation>ആൽബം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/allItems/SortMenu.qml" line="36"/>
+        <location filename="../src/music-player/allItems/SortMenu.qml" line="42"/>
+        <source>Artist</source>
+        <translation>ആർട്ടിസ്റ്റ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/allItems/SortMenu.qml" line="35"/>
+        <source>Title</source>
+        <translation>പേര്</translation>
+    </message>
+</context>
+<context>
+    <name>SublistTitleButton</name>
+    <message>
+        <location filename="../src/music-player/allItems/SublistTitleButton.qml" line="54"/>
+        <source>1 song</source>
+        <translation>1 ഗാനം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/allItems/SublistTitleButton.qml" line="54"/>
+        <source>%1 songs</source>
+        <translation>&apos;%1 ഗാനങ്ങൾ&apos;</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/allItems/SublistTitleButton.qml" line="64"/>
+        <source>Play All</source>
+        <translation>എല്ലാം പ്ലേ ചെയ്യുക</translation>
+    </message>
+</context>
+<context>
+    <name>ToolButtonItem</name>
+    <message>
+        <location filename="../src/music-player/allItems/ToolButtonItem.qml" line="40"/>
+        <source>Play All</source>
+        <translation>എല്ലാം പ്ലേ ചെയ്യുക</translation>
+    </message>
+</context>
+<context>
+    <name>Toolbar</name>
+    <message>
+        <location filename="../src/music-player/mainwindow/Toolbar.qml" line="42"/>
+        <source>Sequential play</source>
+        <translation>സീക്വൻഷ്യൽ പ്ലേ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/Toolbar.qml" line="42"/>
+        <source>List loop</source>
+        <translation>ലിസ്റ്റ് ലൂപ്പ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/Toolbar.qml" line="42"/>
+        <source>Single loop</source>
+        <translation>സിംഗിൾ ലൂപ്പ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/Toolbar.qml" line="42"/>
+        <source>Shuffle</source>
+        <translation>ഷൂഫിൾ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/Toolbar.qml" line="217"/>
+        <source>Unfavorite</source>
+        <translation>അഭിലാഷം അകറ്റുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/Toolbar.qml" line="217"/>
+        <source>Favorite</source>
+        <translation>അഭിലാഷം ചേർക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/Toolbar.qml" line="230"/>
+        <source>My Favorites</source>
+        <translation>എന്റെ ഇഷ്ടപ്പെട്ടവ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/Toolbar.qml" line="248"/>
+        <source>Previous</source>
+        <translation>പൂർവ്വം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/Toolbar.qml" line="269"/>
+        <source>Play/Pause</source>
+        <translation>പ്ലേ/പസ്സ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/Toolbar.qml" line="290"/>
+        <source>Next</source>
+        <translation>അടുത്തത്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/Toolbar.qml" line="406"/>
+        <source>Lyrics</source>
+        <translation>ലെക്സിസ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/Toolbar.qml" line="455"/>
+        <source>Play Queue</source>
+        <translation>പ്ലേ ക്വിയ്</translation>
+    </message>
+</context>
+<context>
+    <name>WindowTitlebar</name>
+    <message>
+        <location filename="../src/music-player/mainwindow/WindowTitlebar.qml" line="75"/>
+        <source>Add playlist</source>
+        <translation>പ്ലേ ലിസ്റ്റ് ചേർക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/WindowTitlebar.qml" line="77"/>
+        <source>New playlist</source>
+        <translation>പുതിയ പ്ലെയിസ്റ്റ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/WindowTitlebar.qml" line="82"/>
+        <location filename="../src/music-player/mainwindow/WindowTitlebar.qml" line="432"/>
+        <source>Add music</source>
+        <translation>മ്യൂസിക് ചേർക്കുക</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/WindowTitlebar.qml" line="90"/>
+        <source>Equalizer</source>
+        <translation>ഇക്വലൈസർ</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/WindowTitlebar.qml" line="101"/>
+        <source>Settings</source>
+        <translation>സെറ്റിംഗ്സ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/WindowTitlebar.qml" line="116"/>
+        <source>Music</source>
+        <translation>സംഗീതം</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/WindowTitlebar.qml" line="118"/>
+        <source>Music is a local music player with beautiful design and simple functions.</source>
+        <translation>മ്യൂസിക് ഒരു സൗജന്യ മ്യൂസിക് പ്ലെയർ ആണ്, സൗന്ദര്യമായ ഡിസൈൻ ഉള്ളതും സാധാരണ ഫംഗ്ഷൻസുകളുള്ളതുമാണ്.</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/WindowTitlebar.qml" line="119"/>
+        <source>Version:</source>
+        <translation>വേര്‍ഷൻ:</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/WindowTitlebar.qml" line="247"/>
+        <source>Previous page</source>
+        <translation>പൂർവ്വ പേജ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/WindowTitlebar.qml" line="263"/>
+        <source>Next page</source>
+        <translation>അടുത്ത പേജ്</translation>
+    </message>
+    <message>
+        <location filename="../src/music-player/mainwindow/WindowTitlebar.qml" line="273"/>
+        <source>Search</source>
+        <translation>തിരയുക</translation>
+    </message>
+</context>
+</TS>

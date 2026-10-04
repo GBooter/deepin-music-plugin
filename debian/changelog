@@ -1,0 +1,578 @@
+deepin-music (7.0.68) unstable; urgency=medium
+
+  * chore: migrate linglong deps to declarative buildext.apt
+  * fix: remove always-on-top flag from settings dialog
+
+ -- Wang Yu <wangyu@uniontech.com>  Wed, 23 Sep 2026 20:49:36 +0800
+
+deepin-music (7.0.67) unstable; urgency=medium
+
+  * fix: add keyboard navigation for search dropdown
+  * fix: correct search dropdown position offset
+  * refactor: remove Windows start menu shortcut creation logic
+  * fix(lyrics): parse repeated LRC timestamps as separate lines
+  * [skip CI] i18n: Translate deepin-music_en_US.ts in pl
+  * [skip CI] i18n: Translate deepin-music_en_US.ts in ar
+  * [skip CI] i18n: Translate deepin-music_en_US.ts in sv
+  * fix: clean up partial WinSMTC initialization in shutdown
+  * fix: correct QML signal handler syntax in WindowTitlebar
+  * fix: remove forced poll.h include workaround for VLC headers
+  * fix: resolve QML compatibility issues and add null safety checks
+  * fix: harden WinSMTC teardown and fix SMTC play fallback per review
+  * feat: add Windows SMTC support and wrap MPRIS in Linux-only guards
+  * fix: word highlight 500ms early and 1-digit fraction timestamps dropped
+  * feat: support word-by-word lyric parsing and highlighting
+  * fix: improve search result UI and navigation
+  * fix: resolve UI centering and alignment issues
+  * fix: ensure directories exist before use and update cover metadata
+  * fix: update Arabic (ar) translations
+  * fix: always recalculate position to prevent issues on window resize
+  * chore: update shader files for Windows GLSL compatibility
+  * fix: improve VLC engine detection and null safety
+  * fix: remove SystemPalette and use hardcoded colors in sidebar
+  * fix: Use version-agnostic library names for FFmpeg DLLs on Windows
+  * fix: disable unnecessary VLC modules and add Qt6::DBus dependency
+  * fix: Windows file location support
+  * fix: QtPlayer volume setting - convert int to qreal
+
+ -- Wang Yu <wangyu@uniontech.com>  Thu, 03 Sep 2026 14:28:00 +0800
+
+deepin-music (7.0.66) unstable; urgency=medium
+
+  * perf(startup): defer non-critical initialization until first frame
+  * fix(startup): restore deferred UI interactions
+  * fix(database): migrate legacy music columns safely
+  * chore(qml): update Connections signal handler syntax
+  * fix(startup): refresh queue count without playlist view
+  * fix(window): handle dialog flags and close actions safely
+  * fix(album): restore clickability of empty-state buttons
+  * chore: Sync by
+    https://github.com/linuxdeepin/.github/commit/a300f8523d4876677112ed
+    ab6a0772f7ad112976
+
+ -- zhangkun <zhangkun2@uniontech.com>  Wed, 19 Aug 2026 20:07:02 +0800
+
+deepin-music (7.0.65) unstable; urgency=medium
+
+  * fix: pause playback before suspend to avoid noise
+
+ -- Wang Yu <wangyu@uniontech.com>  Tue, 18 Aug 2026 14:49:12 +0800
+
+deepin-music (7.0.64) unstable; urgency=medium
+
+  * chore(deps): remove unused Qt5 and Dtk6Widget dependencies
+
+ -- Wang Yu <wangyu@uniontech.com>  Fri, 14 Aug 2026 15:29:02 +0800
+
+deepin-music (7.0.63) unstable; urgency=medium
+
+  * fix(core): store pending media task hashes only
+  * fix: disable VLC taglib plugin to avoid crash
+  * fix: persist album view display mode across menu switches (#338091)
+  * fix(core): preserve pending media analysis tasks
+  * fix(core): move media analysis off import worker
+  * fix: deep-bind VLC TagLib plugin and add audioDataReady signal
+  * fix: miscellaneous C++ fixes for Windows compatibility
+  * fix: add Windows dialog flags, centering, and QML compatibility fixes
+  * fix: adapt main.cpp for Windows environment setup
+  * fix: adapt VLC player components for Windows platform
+  * fix: adapt dynamic library loading for Windows (MSYS2/MinGW)
+  * build: adapt CMakeLists for cross-platform (Windows/MSYS2) compilation
+  * fix: hide prev/next page tooltip in lyric view
+  * refactor: rewrite waveform generation with swr_convert
+  * fix(audioanalysis): reuse precomputed import hashes
+  * fix(utils): avoid regex creation in pinyin splitting
+  * chore(copyright): update CircularImg year
+  * fix: improve sidebar colors across themes
+  * refactor: replace DApplication with QGuiApplication + DGuiApplicationHelper
+  * feat: merge cover and lyrics extraction into single TagLib pass with concurrent processing
+  * [skip CI] i18n: Translate deepin-music_en_US.ts in pt_BR
+  * [skip CI] i18n: Translate desktop.ts in pt_BR
+
+ -- Wang Yu <wangyu@uniontech.com>  Fri, 14 Aug 2026 10:41:04 +0800
+
+deepin-music (7.0.62) unstable; urgency=medium
+
+  * chore: Update version to 7.0.62
+  * fix: constrain equalizer slider widths and adjust left padding for better layout
+  * chore: update copyright year in CloseConfirmDialog
+  * fix: improve dialog layout responsiveness
+  * feat: improve search result UI and fix playlist button tooltip
+  * fix(CI): broken cppcheck
+  * fix: favorite icon turns white when list item is selected
+  * Revert "feat(shell): add DDE Shell music control widget"
+  * feat(shell): add DDE Shell music control widget
+  * test(libdmusic): raise line coverage above 80%
+  * fix(player): stop player when manual navigation has no playable metas
+  * fix: add X-Deepin-Singleton flag to desktop file
+
+ -- zhanghongyuan <zhanghongyuan@uniontech.com>  Thu, 30 Jul 2026 15:15:58 +0800
+
+deepin-music (7.0.61) unstable; urgency=medium
+
+  * fix(player): coalesce rapid manual track switches and cancel stale fades
+  * fix: remove deepin prefix from Chinese translations in desktop file
+  * perf(player): cache playable meta and reuse matched play queue
+
+ -- Wang Yu <wangyu@uniontech.com>  Thu, 16 Jul 2026 21:38:08 +0800
+
+deepin-music (7.0.60) unstable; urgency=medium
+
+  * chore: Update version to 7.0.60
+  * fix(datamanager): normalize album/artist hash throughout importMetas (#704)
+  * fix: import music from default music dir on empty state click
+  * perf(db): index album/artist name for O(1) lookup in import (#702)
+  * fix: index meta hash for O(1) lookup during import
+  * fix: extract cover/lyrics after import loop for instant list
+  * fix: skip full rewrite on exit when in-memory model unchanged
+  * fix: batch playlist meta insert to avoid per-row SELECT
+  * fix(test): use bare include names in test_audiodatadetector
+  * fix: persist only newly imported metas instead of full rewrite
+  * fix(player): play current track on dbus play after restart
+  * chore: Sync by https://github.com/linuxdeepin/.github/commit/88706fa723e3771211cb0781d3d97fd4a6cd2a68
+  * test: raise libdmusic coverage to 80% and fix cross-run DB isolation
+  * test: expand PlayerEngine and DataManager tests to exceed 70% coverage
+  * test: expand AudioAnalysis and Presenter tests to reach 66% coverage
+  * test: expand libdmusic unit tests and raise coverage to 55%
+  * [skip CI] i18n: Translate deepin-music_en_US.ts in es
+  * [skip CI] i18n: Translate deepin-music_en_US.ts in es
+  * [skip CI] i18n: Translate deepin-music_en_US.ts in es
+  * test: expand libdmusic unit tests and raise coverage to 34.9%
+  * test: add libdmusic unit test cases and fix coverage collection
+  * test: migrate libdmusic-test from Qt5 to Qt6 and enable coverage
+
+ -- zhanghongyuan <zhanghongyuan@uniontech.com>  Thu, 09 Jul 2026 13:11:54 +0800
+
+deepin-music (7.0.59) unstable; urgency=medium
+
+  * fix: Unresponsive click on tray panel applications
+  * fix(titlebar): fix window control button hover state not displayed
+  * fix: Music app process crash
+  * fix(sidebar): fix playlist name ellipsis overflow beyond blue border
+
+ -- Wang Yu <wangyu@uniontech.com>  Thu, 11 Jun 2026 19:36:50 +0800
+
+deepin-music (7.0.58) unstable; urgency=medium
+
+  * fix(sdlplayer): fallback to stereo when multi-channel device open fails
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 28 May 2026 17:19:37 +0800
+
+deepin-music (7.0.57) unstable; urgency=medium
+
+  * chore: update translation
+
+ -- Wang Yu <wangyu@uniontech.com>  Tue, 19 May 2026 20:20:02 +0800
+
+deepin-music (7.0.56) unstable; urgency=medium
+
+  * fix(ui): simplify titlebar responsive logic and make about dialog modal
+
+ -- Wang Yu <wangyu@uniontech.com>  Fri, 10 Apr 2026 16:05:48 +0800
+
+deepin-music (7.0.55) unstable; urgency=medium
+
+  * fix(playlist): fix drag-and-drop sorting in current playlist
+  * fix: extract ToolFloatingPanel as reusable component
+  * fix: continue playback after removing currently playing track
+  * chore: Unify linglong.yaml
+
+ -- Wang Yu <wangyu@uniontech.com>  Thu, 05 Mar 2026 21:39:47 +0800
+
+deepin-music (7.0.54) unstable; urgency=medium
+
+  * fix: Fix build fail
+
+ -- wangrong <wangrong@uniontech.com>  Thu, 05 Feb 2026 19:39:48 +0800
+
+deepin-music (7.0.53) unstable; urgency=medium
+
+  * fix(ui): improve drag-and-drop functionality in SideBarItem 
+  * fix(ui): optimize settings reset functionality in Presenter and SettingsDialog
+  * fix(ui): improve main window styling and blur effects
+  * fix(build): copy libvlc_pulse.so to standard library path
+  * fix(ui): enhance responsive design for main window components
+  * fix: Fix fail to load libSDL2 library
+  * fix(datamanager): enhance query safety and pointer validation
+  * chore: Update compiler flags for security enhancements
+  * fix(ui): streamline selection handling in AllMusicListView
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 05 Feb 2026 15:50:48 +0800
+
+deepin-music (7.0.52) unstable; urgency=medium
+
+  * chore: update translation
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Tue, 06 Jan 2026 13:05:26 +0800
+
+deepin-music (7.0.51) unstable; urgency=medium
+
+  * chore: Update version to 7.0.51
+  * fix(ui): enhance EqualizerDialog functionality and message handling
+  * fix(ui): update play/pause menu item state based on playing count
+  * fix(ui): update window title based on current media metadata
+  * fix(ui): improve lyric window animation handling
+  * fix(datamanager): implement signal to clear importing hashes on metadata deletion
+  * fix(datamanager): prevent duplicate meta additions and improve import handling
+  * fix(ui): enhance drag-and-drop functionality and update translations
+
+ -- re2zero <yangwu@uniontech.com>  Sun, 04 Jan 2026 13:12:46 +0800
+
+deepin-music (7.0.50) unstable; urgency=medium
+
+  * fix(ui): update toolbar layout and time label widths
+  * fix(ui): update layout and translations in EqualizerDialog and related files
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 25 Dec 2025 19:18:29 +0800
+
+deepin-music (7.0.49) unstable; urgency=medium
+
+  * chore: Update version to 7.0.49
+  * feat: Support mips64 linglong build
+  * feat(ui): update volume control icons in toolbar
+  * fix(ui): reduce floating message display duration
+  * feat(ui): add keyboard shortcuts for music list selection and deletion
+
+ -- zhanghongyuan <zhanghongyuan@uniontech.com>  Fri, 21 Nov 2025 08:48:04 +0800
+
+deepin-music (7.0.48) unstable; urgency=medium
+
+  * Update version to 7.0.48. 
+
+ -- Tian ShiLin <tianshilin@uniontech.com>  Thu, 16 Oct 2025 19:11:55 +0800
+
+deepin-music (7.0.47) unstable; urgency=medium
+
+  * chore: Update linglong base and runtime
+
+ -- wangrong <wangrong@uniontech.com>  Thu, 18 Sep 2025 19:26:39 +0800
+
+deepin-music (7.0.46) unstable; urgency=medium
+
+  *  fix: Save database after importing songs and creating playlists
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 11 Sep 2025 09:55:48 +0800
+
+deepin-music (7.0.45) unstable; urgency=medium
+
+  * fix: Overlapping Interface Controls Issue
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 04 Sep 2025 20:16:31 +0800
+
+deepin-music (7.0.44) unstable; urgency=medium
+
+  * fix: Replace Control with FloatingPanel in Toolbar.qml
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 14 Aug 2025 13:27:30 +0800
+
+deepin-music (7.0.43) unstable; urgency=medium
+
+  * chore: Add Lao translation 
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Wed, 13 Aug 2025 14:01:45 +0800
+
+deepin-music (7.0.42) unstable; urgency=medium
+
+  * chore: Add new Lao translation file
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 07 Aug 2025 16:42:23 +0800
+
+deepin-music (7.0.41) unstable; urgency=medium
+
+  * chore: Fix tag encoding detection for older TagLib versions
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Tue, 05 Aug 2025 20:54:05 +0800
+
+deepin-music (7.0.40) unstable; urgency=medium
+
+  * chore: Update deepin-manual resources
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Wed, 16 Jul 2025 09:27:08 +0800
+
+deepin-music (7.0.39) unstable; urgency=medium
+
+  * fix: music player crash issue
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Tue, 15 Jul 2025 10:24:15 +0800
+
+deepin-music (7.0.38) unstable; urgency=medium
+
+  * chore: Update version to 7.0.37
+  * resolve compile error
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Fri, 11 Jul 2025 09:48:53 +0800
+
+deepin-music (7.0.37) unstable; urgency=medium
+
+  * chore: Update package URLs and digests in linglong.yaml files
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 10 Jul 2025 16:54:30 +0800
+
+deepin-music (7.0.36) unstable; urgency=medium
+
+  * chore: Update deepin-manual resources
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Wed, 09 Jul 2025 16:37:34 +0800
+
+deepin-music (7.0.35) unstable; urgency=medium
+
+  * fix: Update toolbar implementation to avoid inheriting from FloatPanel
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 03 Jul 2025 16:21:23 +0800
+
+deepin-music (7.0.34) unstable; urgency=medium
+
+  * chore: Update deb sources for linglong yaml
+
+ -- wangrong <wangrong@uniontech.com>  Wed, 02 Jul 2025 10:30:00 +0800
+
+deepin-music (7.0.33) unstable; urgency=medium
+
+  * chore: update translation
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Tue, 01 Jul 2025 19:23:43 +0800
+
+deepin-music (7.0.32) unstable; urgency=medium
+
+  * fix: Update music section headers in translation files
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Tue, 24 Jun 2025 17:29:20 +0800
+
+deepin-music (7.0.31) unstable; urgency=medium
+
+  * Update version to 7.0.31
+
+ -- Tian ShiLin <tianshilin@uniontech.com>  Mon, 23 Jun 2025 15:08:53 +0800
+
+deepin-music (7.0.30) unstable; urgency=medium
+
+  * fix debug log
+
+ -- liuzheng <liuzheng@uniontech.com>  Sun, 22 Jun 2025 00:35:05 +0800
+
+deepin-music (7.0.29) unstable; urgency=medium
+
+  * chore: Update dman's resources
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 19 Jun 2025 14:53:22 +0800
+
+deepin-music (7.0.28) unstable; urgency=medium
+
+  * Update version to 7.0.28 
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 22 May 2025 16:05:38 +0800
+
+deepin-music (7.0.27) unstable; urgency=medium
+
+  * Update version to 7.0.27
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Wed, 14 May 2025 11:17:13 +0800
+
+deepin-music (7.0.26) unstable; urgency=medium
+
+  * New version 7.0.26 
+
+ -- Liu zheng <liuzheng@uniontech.com>  Tue, 29 Apr 2025 16:35:57 +0800
+
+deepin-music (7.0.25) unstable; urgency=medium
+
+  * chore: New version 7.0.25
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Wed, 16 Apr 2025 16:19:17 +0800
+
+deepin-music (7.0.24) unstable; urgency=medium
+
+  * chore: New version 7.0.24 
+
+ -- Liu zheng <liuzheng@uniontech.com>  Wed, 02 Apr 2025 19:15:32 +0800
+
+deepin-music (7.0.23) unstable; urgency=medium
+
+  * chore: New version 7.0.23. 
+
+ -- Liu zheng <liuzheng@uniontech.com>  Thu, 27 Mar 2025 20:21:49 +0800
+
+deepin-music (7.0.22) unstable; urgency=medium
+
+  * chore: New version 7.0.22.
+
+ -- Wang Yu <wangyu@uniontch.com>  Thu, 20 Mar 2025 18:48:26 +0800
+
+deepin-music (7.0.21) unstable; urgency=medium
+
+  * chore: New version 7.0.21.
+
+ -- Wang Yu <wangyu@uniontch.com>  Wed, 12 Mar 2025 19:50:07 +0800
+
+deepin-music (7.0.20) unstable; urgency=medium
+
+  * chore: update linglong version (#543)
+  * fix: add isPlayAll property and update translations (#544)
+  * fix: update UI components layout and playAll button state(Bug: 281269)
+  * fix: improve data loading in album and artist sublist views (#546)
+  * feat: add delete finished signal and improve list item background visibility (#547)
+  * fix: add conditional text for menu items based on context (#548)
+  * fix: add force play for empty metaHash in musicResult playlist (#549)
+
+ -- renbin <renbin@uniontech.com>  Thu, 27 Feb 2025 19:14:21 +0800
+
+deepin-music (7.0.19) unstable; urgency=medium
+
+  * chore: New version 7.0.19.
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Thu, 20 Feb 2025 20:20:44 +0800
+
+deepin-music (7.0.18) unstable; urgency=medium
+
+  * chore: New version 7.0.18.
+  * chore: Adapt linglong.
+
+ -- wangrong <wangrong@uniontech.com>  Sat, 08 Feb 2025 15:13:35 +0800
+
+deepin-music (7.0.17) unstable; urgency=medium
+
+  * chore: New version 7.0.17.
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Fri, 17 Jan 2025 10:47:40 +0800
+
+deepin-music (7.0.16) unstable; urgency=medium
+
+  * chore: New version 7.0.16.
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Fri, 20 Dec 2024 11:52:01 +0800
+
+deepin-music (7.0.15) unstable; urgency=medium
+
+  * New version 7.0.15.
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Sat, 14 Dec 2024 11:00:21 +0800
+
+deepin-music (7.0.14) unstable; urgency=medium
+
+  * New version 7.0.14
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Sat, 07 Dec 2024 14:51:30 +0800
+
+deepin-music (7.0.13) unstable; urgency=medium
+
+  * New version 7.0.13
+
+ -- Liu zheng <liuzheng@uniontech.com>  Sat, 30 Nov 2024 13:06:11 +0800
+
+deepin-music (7.0.12) unstable; urgency=medium
+
+  * New version 7.0.12
+
+ -- Liu zheng <liuzheng@uniontech.com>  Fri, 22 Nov 2024 16:12:33 +0800
+
+deepin-music (7.0.11) unstable; urgency=medium
+
+  * remove kwayland-shell env 
+
+ -- Liu zheng <liuzheng@uniontech.com>  Wed, 06 Nov 2024 16:41:49 +0800
+
+deepin-music (7.0.10) unstable; urgency=medium
+
+  * New version 7.0.10
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Fri, 20 Oct 2024 16:02:41 +0800
+
+deepin-music (7.0.9) unstable; urgency=medium
+
+  * New version 7.0.9
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Fri, 20 Sep 2024 13:53:29 +0800
+
+deepin-music (7.0.8) unstable; urgency=medium
+
+  * New version 7.0.8
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Thu, 05 Sep 2024 10:48:56 +0800
+
+deepin-music (7.0.7) unstable; urgency=medium
+
+  * New version 7.0.7
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Wed, 21 Aug 2024 14:52:33 +0800
+
+deepin-music (7.0.6) unstable; urgency=medium
+
+  * New version 7.0.5
+  * Compatible with QT6 version
+  * Add music animation effects
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Thu, 15 Aug 2024 17:45:22 +0800
+
+deepin-music (7.0.5) unstable; urgency=medium
+
+  * New version 7.0.5
+  * fix: wrong format dci with checked
+  * fix: Fix lyrics page with no dark mode(Bug: 248325)
+
+ -- lijiaxuan <lijiaxuan@uniontech.com>  Fri, 12 Apr 2024 17:03:33 +0800
+
+deepin-music (7.0.4) unstable; urgency=medium
+
+  * New version 7.0.4
+
+ -- wang fei <wangfei@deepin.org>  Tue, 19 Mar 2024 15:01:32 +0800
+
+deepin-music (7.0.3) unstable; urgency=medium
+
+  * New version 7.0.3
+
+ -- fengli <fengli@uniontech.com>  Wed, 30 Aug 2023 10:19:12 +0800
+
+deepin-music (7.0.2) unstable; urgency=medium
+
+  * New version 7.0.2
+
+ -- fengli <fengli@uniontech.com>  Thu, 5 Jan 2023 11:19:26 +0000
+
+deepin-music (7.0.1) unstable; urgency=low
+
+  * New version 7.0.1
+
+ -- wangyu <wangyu@uniontech.com>  Fri, 10 Jun 2022 16:20:26 +0000
+
+deepin-music (6.0.1) stable; urgency=low
+
+  * New version 6.0.1
+
+ -- fengli <fengli@uniontech.com>  Tue, 13 Jul 2022 10:13:26 +0000
+
+deepin-music (2.99.0-1) stable; urgency=low
+
+  * Pre-release for deepin music 3.0
+
+ -- TagBuilder <tagbuilder@deepin.com>  Mon, 23 May 2016 14:20:26 +0000
+
+deepin-music (2.3.2-1) stable; urgency=low
+
+  * Autobuild Tag 2.3.2
+
+ -- TagBuilder <tagbuilder@linuxdeepin.com>  Mon, 23 May 2016 14:20:26 +0000
+
+deepin-music (2.90.0-1) stable; urgency=low
+
+  * Autobuild Tag 2.90.0
+
+ -- TagBuilder <tagbuilder@linuxdeepin.com>  Thu, 21 Apr 2016 14:51:38 +0000
+
+deepin-music (2.3.0-1) stable; urgency=low
+
+  * Autobuild Tag 2.3.0
+
+ -- TagBuilder <tabbuilder@linuxdeepin.com>  Fri, 03 Jul 2015 10:03:54 +0000
+
+deepin-music (2.90.0-1) stable; urgency=low
+
+  * Autobuild Tag 2.90.0
+
+ -- TagBuilder <tabbuilder@linuxdeepin.com>  Wed, 01 Jul 2015 16:57:13 +0000
+
+deepin-music (0.0.0) unstable; urgency=medium
+
+  * Unstable release.
+
+ -- 宋文武 <songwenwu@linuxdeepin.com>  Mon, 22 Dec 2014 14:10:51 +0800

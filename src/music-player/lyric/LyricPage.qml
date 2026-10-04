@@ -1,0 +1,384 @@
+// SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+import QtQuick 2.11
+import QtQuick.Window 2.2
+import QtQuick.Layouts 1.11
+import QtQuick.Controls 2.4
+import Qt5Compat.GraphicalEffects
+
+import org.deepin.dtk 1.0
+
+import "../dialogs"
+
+Rectangle{
+    id: lrcRectItem
+
+    property string titleStr: ""
+    property string artist: ""
+    property string album: ""
+    property string bgImgPath: "qrc:/dsg/img/music.svg"
+    property bool withLrcs: lrcModel.count == 0 ? false : true
+    property int centerAreaWidth: 899
+    property real currentPosition: 0
+//    property int curIndex: 0
+    property ListModel lrcModel: ListModel{}
+    property var wordLyricsData: []
+
+    signal currentIndexChanged(int index)
+
+    Image {
+        id: bgImg
+        width: parent.width
+        height: Window.height
+        anchors.bottom: parent.bottom
+        source: bgImgPath
+        fillMode: Image.PreserveAspectCrop
+        clip: true
+        visible: false
+        cache: false
+        Rectangle {
+            width: parent.width
+            height: Window.height
+            color: DTK.themeType === ApplicationHelper.DarkType ? Qt.rgba(0, 0, 0, 0.4) : Qt.rgba(247, 247, 247, 0.4)
+        }
+    }
+    FastBlur {
+        anchors.fill: bgImg
+        source: bgImg
+        radius: 128
+    }
+
+    Rectangle {
+        width: centerAreaWidth
+        height: parent.height
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: "#00000000"
+
+    Row {
+        spacing: 33
+        width: parent.width
+        height: parent.height
+        topPadding: 70
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        Rectangle {
+            id: leftAreaColumn
+            width: 426
+            height: parent.height - 141
+            color: "#00000000"
+
+            Rectangle {
+                id: leftArea
+                width: 426
+                height: 426
+                color: "#00000000"
+                anchors.centerIn: parent
+                ShaderView {
+                    id: shaderView
+                }
+            }
+        }
+
+        Column {
+            id: rightAreaColumn
+
+            property int lrcWidth: parent.width-630
+            property int lrcHeigth: parent.height-164
+
+            Rectangle {
+                id: rightAreaRect
+                width: 440
+                height: rightAreaColumn.lrcHeigth
+                color: "#00000000"
+                visible: titleStr.length == 0 ? false : true
+
+                Column {
+                    spacing: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Rectangle {
+                        id: title
+                        width: 440
+                        height: 80
+                        color: "#00000000"
+
+                        Column {
+                            width: parent.width
+                            height: parent.height
+                            spacing: 9
+
+                            Rectangle {
+                                width: parent.width
+                                height: 35
+                                color: "#00000000"
+
+                                Label {
+                                    width: parent.width
+                                    text: titleStr
+                                    color: DTK.themeType === ApplicationHelper.DarkType ? Qt.rgba(255, 255, 255, 0.9) : Qt.rgba(0, 0, 0, 0.9)
+                                    font: DTK.fontManager.t3
+                                    elide: Text.ElideRight
+                                }
+                            }
+                            Rectangle {
+                                width: parent.width
+                                height: 20
+                                color: "#00000000"
+                                Row {
+                                    width: parent.width
+                                    height: parent.height
+                                    spacing: 30
+
+                                    Text {
+                                        width: 174
+                                        height: parent.height
+                                        color: DTK.themeType === ApplicationHelper.DarkType ? Qt.rgba(255, 255, 255, 0.7) : Qt.rgba(0, 0, 0, 0.7)
+                                        text: qsTr("Artist") + (": %1".arg(artist.length == 0 ? qsTr("Unknown") : artist));
+                                        font: DTK.fontManager.t6
+                                        elide: Text.ElideRight
+                                    }
+                                    Text {
+                                        width: 174
+                                        height: parent.height
+                                        color: DTK.themeType === ApplicationHelper.DarkType ? Qt.rgba(255, 255, 255, 0.7) : Qt.rgba(0, 0, 0, 0.7)
+                                        text: qsTr("Album") + ": %1".arg(album.length == 0 ? qsTr("Unknown") : album);
+                                        font: DTK.fontManager.t6
+                                        elide: Text.ElideRight
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    Rectangle {
+                        visible: withLrcs
+                        width: 440
+                        height: rightAreaColumn.lrcHeigth - 100
+                        color: "#00000000"
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        LyricRect {
+                            id: lyricRect
+                            currentPosition: lrcRectItem.currentPosition
+                            wordLyricsData: lrcRectItem.wordLyricsData
+                        }
+                    }
+                    Rectangle {
+                        id: nolyric
+                        visible: !withLrcs
+                        width: 440
+                        height: rightAreaColumn.lrcHeigth - 150
+                        color: "transparent"
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        Column {
+                            width: parent.width
+                            height: parent.height
+                            topPadding: 151 + (parent.height - 416) / 2
+                            spacing: 28
+
+                            Text {
+                                id: txtNoLyric;
+                                width: parent.width
+                                anchors.left: parent.left
+                                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+
+                                text: qsTr("No lyrics found")
+                                color: DTK.themeType === ApplicationHelper.DarkType ? Qt.rgba(255, 255, 255, 0.7) : Qt.rgba(0, 0, 0, 0.7)
+                                font: DTK.fontManager.t5
+                            }
+                            Text {
+                                id: txtLoadLyric;
+                                width: parent.width
+                                anchors.left: parent.left
+                                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+
+                                text: qsTr("Please put the lyric file (same name as the song) and the song file in the same folder")
+                                color: DTK.themeType === ApplicationHelper.DarkType ? Qt.rgba(255, 255, 255, 0.7) : Qt.rgba(0, 0, 0, 0.7)
+                                font: DTK.fontManager.t6
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        Rectangle {
+            id: idleRect
+            width: 440
+            height: parent.height-164
+            color: "#00000000"
+            visible: titleStr.length == 0 ? true : false
+
+            Text {
+                width: parent.width
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+
+                text: "没有找到歌词"
+                color: "#70000000"
+                font: DTK.fontManager.t5
+            }
+        }
+        }
+    }
+
+    // Lyric search button
+    // 单例对话框：重复 createObject 会因 DTK DialogWindow 窗口类型设置失败导致
+    // 新实例不被映射（用户看到"按钮无反应"），且旧实例泄漏；改为创建一次复用。
+    //
+    // parent 必须传 null：DTK DialogWindow 继承 QQuickWindow（顶层窗口），
+    // 给它设置 QObject/QQuickItem 父对象会让窗口无法独立映射与置顶，
+    // 症状同样是「点了 Search Lyrics 没反应」。销毁由 Component.onDestruction 兜底。
+    property var lyricSearchDialog: null
+
+    Button {
+        id: lyricSearchBtn
+        visible: titleStr.length > 0
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.margins: 20
+        anchors.topMargin: 100
+        width: 100
+        height: 36
+        text: qsTr("Search Lyrics")
+        onClicked: {
+            if (!lyricSearchDialog) {
+                lyricSearchDialog = lyricSearchDialogComponent.createObject(null)
+                lyricSearchDialog.lyricApplied.connect(function() {
+                    metaChange()
+                })
+            }
+            lyricSearchDialog.searchKeyword = artist.length > 0 ? titleStr + " " + artist : titleStr
+            lyricSearchDialog.visible = true
+            lyricSearchDialog.raise()
+            // 延迟到窗口映射后再请求激活，提升 X11/Wayland 下置顶与获得焦点的成功率
+            Qt.callLater(function() {
+                if (lyricSearchDialog) lyricSearchDialog.requestActivate()
+            })
+        }
+    }
+
+    Component {
+        id: lyricSearchDialogComponent
+        LyricSearchDialog {}
+    }
+
+    function metaChange(){
+        lrcModel.clear()
+        wordLyricsData = []
+
+        var meta = Presenter.getActivateMeta()
+        titleStr = meta["title"]
+        artist = meta["artist"]
+        album = meta["album"]
+        bgImgPath = "file:///" + meta["coverUrl"]
+
+        if (titleStr.length === 0 && lrcRectItem.visible) {
+            lyricHideAnimation.start()
+            return
+        }
+
+        var lyricList = Presenter.getLyrics();
+        var tempWordData = [];
+        for (var i = 0; i < lyricList.length; i++) {
+            var item = lyricList[i];
+            // 将 words 数据存储到单独的 JS 数组中
+            var words = item["words"] || [];
+            tempWordData.push(words);
+            // 创建不包含 words 的新对象，因为 ListModel 无法正确存储嵌套数据
+            lrcModel.append({
+                "time": item["time"],
+                "lyric": item["lyric"],
+                "hasWordTiming": item["hasWordTiming"]
+            });
+        }
+        wordLyricsData = tempWordData;
+
+        //切换shader
+        switchShader();
+    }
+
+    function onLyricsChanged(trackHash) {
+        var meta = Presenter.getActivateMeta()
+        if (meta["hash"] !== trackHash) {
+            return
+        }
+        lrcModel.clear()
+        wordLyricsData = []
+
+        var lyricList = Presenter.getLyrics();
+        var tempWordData = [];
+        for (var i = 0; i < lyricList.length; i++) {
+            var item = lyricList[i];
+            var words = item["words"] || [];
+            tempWordData.push(words);
+            lrcModel.append({
+                "time": item["time"],
+                "lyric": item["lyric"],
+                "hasWordTiming": item["hasWordTiming"]
+            });
+        }
+        wordLyricsData = tempWordData;
+    }
+
+    function positionChange(position, length) {
+        // currentPosition 用于逐字高亮，必须使用原始播放位置；
+        // +500ms 偏移仅用于提前滚动当前行到视野中央
+        currentPosition = position
+        var searchPosition = position + 500
+        //二分法查找位置
+        var lt,rt
+        lt = 0
+        rt = lrcModel.count
+        while (lt < rt - 1) {
+            var mid = (lt + rt) >> 1
+            var item =lrcModel.get(mid)
+
+            if (item["time"] > searchPosition)
+                rt = mid
+            else
+                lt = mid
+        }
+        currentIndexChanged(lt)
+    }
+
+    function isShowShader(shaderStatus) {
+        if(shaderStatus === ShaderEffect.Error) {
+            shaderView.stackView.clear();
+            shaderView.stackView.push(shaderView.taskMap[5]);
+        }
+    }
+
+    Component.onCompleted: {
+        Presenter.metaChanged.connect(metaChange)
+        Presenter.lyricsChanged.connect(onLyricsChanged)
+        Presenter.positionChanged.connect(positionChange)
+        shaderView.sigShaderStatusChange.connect(isShowShader)
+        metaChange()
+    }
+
+    Component.onDestruction: {
+        shaderView.stackView.clear();
+        if (lyricSearchDialog) {
+            lyricSearchDialog.destroy()
+            lyricSearchDialog = null
+        }
+    }
+
+    function switchShader() {
+        if(shaderView.currentItem >= 4)
+            shaderView.currentItem = -1;
+        shaderView.currentItem += 1;
+        shaderView.stackView.clear();
+        shaderView.stackView.push(shaderView.taskMap[shaderView.currentItem]);
+    }
+
+    onVisibleChanged: {
+        if(visible) {
+            switchShader();
+        }
+    }
+}

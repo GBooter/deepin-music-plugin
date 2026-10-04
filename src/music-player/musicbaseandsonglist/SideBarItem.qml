@@ -1,0 +1,310 @@
+// SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+import QtQuick 2.11
+import QtQuick.Window 2.11
+import QtQuick.Layouts 1.11
+import QtQuick.Controls 2.0
+import org.deepin.dtk 1.0
+
+ColumnLayout {
+    property string title
+    property string type
+    property ListModel sideModel
+    property alias view: sideListView
+    property bool fillHeight: false
+    property Component action
+    signal itemClicked(string key, string text)
+    signal itemRightClicked(string key, string text)
+    property ButtonGroup group: ButtonGroup {}
+
+    id: control
+    spacing: 10
+    Layout.leftMargin: 10
+
+    Rectangle {
+        id: siderTitle
+        width: 200
+        height: 20
+        color: "transparent"
+        Label {
+            id: viewLabel
+            width: 42; height: 20
+            anchors.left: parent.left
+            anchors.leftMargin: 10
+            color: DTK.themeType === ApplicationHelper.DarkType ? Qt.rgba(247, 247, 247, 0.7) : Qt.rgba(0, 0, 0, 0.7)
+            text: title
+            font: DTK.fontManager.t6
+            horizontalAlignment: Qt.AlignLeft
+            elide: Text.ElideRight
+        }
+        Loader {
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+            sourceComponent: control.action
+        }
+    }
+
+    ListView {
+        id: sideListView
+        width: 200
+
+        Layout.alignment: Qt.AlignLeft
+        Layout.fillHeight: fillHeight
+        Layout.leftMargin: 10
+        model: sideModel
+        clip: true
+
+        delegate: SideBarItemDelegate{
+            id: sidebarItem
+            width: 180; height: 36
+            backgroundVisible: true
+            normalBackgroundVisible: false
+            ButtonGroup.group: group
+            type: control.type
+            font: DTK.fontManager.t6
+        }
+
+        Keys.onPressed: {
+            switch (event.key){
+            case Qt.Key_F2:
+                sideListView.currentItem.rename();
+                break;
+            case Qt.Key_Delete:
+                if(sideModel.get(currentIndex).editable){
+                    control.showRemoveSong(sideModel.get(currentIndex).uuid)
+                }
+                break
+            default:
+                break;
+            }
+            event.accepted = true;
+        }
+
+        DropArea {
+            property int lastIndex: 0
+            property int toIndex: 0
+            property bool dragForSort: false
+            property bool dragForExpand: false
+            property int hoverIndex: 0
+            property bool isScroll: false
+            property int lastDragY: 0
+
+            id: dropArea
+            anchors.fill: parent
+
+            onEntered: {
+                console.log("onEntered.............", dragForSort)
+                for(var j = 0; j < drag.keys.length; j++) {
+                    if (drag.keys[j] === "uuid") {
+                        dragForSort = true
+                        break
+                    } else if (drag.keys[j] === "music-list/hash-list") {
+                        dragForExpand = true
+                        break
+                    }
+                }
+            }
+            onPositionChanged: {
+//                console.log("onPositionChanged.........drag.y:", drag.y, "   sideListView.height:", sideListView.height)
+                updateHoverIndex()
+
+                var object = mapToItem(musicBaseScrollView, drag.x, drag.y)
+
+//                console.log("drag.x,drag.y:", drag.x, drag.y, "object.x,object.y:", object.x, object.y)
+//                console.log("musicBaseScrollView.atYBeginning:", musicBaseScrollView.contentItem.atYBeginning, "  musicBaseScrollView.atYEnd:", musicBaseScrollView.contentItem.atYEnd)
+
+//                if (drag.y !== lastDragY)
+//                    lastDragY = drag.y
+
+                if (object.y < 30 && !musicBaseScrollView.contentItem.atYBeginning) {
+                    scrollUpTimer.start()
+                } else {
+                    scrollUpTimer.stop()
+                }
+
+                if (object.y > musicBaseScrollView.height - 30 && !musicBaseScrollView.contentItem.atYEnd) {
+                    scrollDownTimer.start()
+                } else {
+                    scrollDownTimer.stop()
+                }
+            }
+            onDropped: {
+                if (dragForSort) {
+                    scrollDownTimer.stop()
+                    scrollUpTimer.stop()
+                    if (drop.getDataAsString("index") > toIndex) {
+                        Presenter.movePlaylist(sideModel.get(drop.getDataAsString("index")).uuid, sideModel.get(toIndex + 1).uuid)
+                        sideModel.move(drop.getDataAsString("index"), toIndex + 1, 1)
+                        sideModel.setProperty(toIndex, "dragFlag", false)
+                    } else {
+                        if(toIndex + 1 >= sideModel.count)
+                            Presenter.movePlaylist(sideModel.get(drop.getDataAsString("index")).uuid, "")
+                        else
+                            Presenter.movePlaylist(sideModel.get(drop.getDataAsString("index")).uuid, sideModel.get(toIndex + 1).uuid)
+                        sideModel.move(drop.getDataAsString("index"), toIndex, 1)
+                        sideModel.setProperty(toIndex - 1, "dragFlag", false)
+                    }
+                    dragForSort = false
+                } else if (dragForExpand) {
+                    console.log("dropForExpand:", drop.getDataAsString("music-list/hash-list"))
+                    var list = drop.getDataAsString("music-list/hash-list").split(",")
+                    console.log("list:", list)
+                    Presenter.addMetasToPlayList(list, sideModel.get(toIndex).uuid);
+                    dragForExpand = false
+                } else {
+                    console.log("dropForImport:", drop.urls)
+                    var urlList = []
+                    for (var i = 0; i < drop.urls.length; i++)
+                        urlList.push(drop.urls[i])
+
+                    var hasValidIndex = toIndex >= 0 && toIndex < sideModel.count
+                    var targetUuid = ""
+
+                    if (hasValidIndex) {
+                        targetUuid = sideModel.get(toIndex).uuid
+                    } else if (control.type === "library") {
+                        targetUuid = "all"
+                    } else {
+                        console.warn("Drop ignored: invalid toIndex for non-library sidebar", toIndex)
+                        return
+                    }
+                    Presenter.importMetas(urlList, targetUuid)
+                }
+            }
+            onExited: {
+                if (toIndex >= 0 && toIndex < sideModel.count) {
+                    sideModel.setProperty(toIndex, "dragFlag", false)
+                }
+                scrollDownTimer.stop()
+                scrollUpTimer.stop()
+            }
+            function updateHoverIndex() {
+//                console.log("updateHoverIndex................", musicBaseScrollView.contentItem.movingHorizontally)
+//                console.log("updateHoverIndex.........drag.y:", drag.y, "   ", musicBaseScrollView.contentItem.contentY)
+//                var obj = mapToGlobal(drag.x, drag.y)
+//                console.log("updateHoverIndex.........drag.y:", drag.y, "  obj.y:", obj.y, "   ", sideListView.originY)
+
+                if (drag.y == lastDragY && isScroll) {
+                    hoverIndex = sideListView.indexAt(drag.x, drag.y + (drag.y - lastDragY) + musicBaseScrollView.contentItem.contentY)
+
+                } else {
+                    hoverIndex = sideListView.indexAt(drag.x, drag.y)
+                }
+
+                if (lastDragY != drag.y)
+                    lastDragY = drag.y
+
+
+//                console.log("drag.y:", drag.y, "  contentY:", musicBaseScrollView.contentItem.contentY, "  lastDragY:", lastDragY,
+//                            "  hoverIndex:", hoverIndex)
+
+                if (dragForSort) {
+                    if (sideModel.get(1).uuid === "cdarole" && hoverIndex <= 1)
+                        hoverIndex = 2
+                    if (drag.y < hoverIndex * 36 + 36 / 2)
+                        hoverIndex--
+                    if (hoverIndex < 0)
+                        hoverIndex = 0
+
+                    sideModel.setProperty(lastIndex, "dragFlag", false)
+                    sideModel.setProperty(hoverIndex, "dragFlag", true)
+                    lastIndex = hoverIndex
+                    toIndex = hoverIndex
+                } else {
+                    toIndex = hoverIndex
+                }
+            }
+            Connections {
+                target: musicBaseScrollView.contentItem
+                function onContentYChanged() {
+                    if (control.type === "playlists")
+                        dropArea.updateHoverIndex()
+                }
+            }
+        }
+
+        Timer {
+            id: scrollDownTimer
+            interval: 40
+            repeat: true
+            running: false
+
+            onTriggered: {
+                if(!musicBaseScrollView.contentItem.atYEnd)
+                    musicBaseScrollView.contentItem.contentY += 10
+            }
+            onRunningChanged: {
+                dropArea.isScroll = running
+            }
+        }
+        Timer {
+            id: scrollUpTimer
+            interval: 40
+            repeat: true
+            running: false
+
+            onTriggered: {
+                if(!musicBaseScrollView.contentItem.atYBeginning)
+                    musicBaseScrollView.contentItem.contentY -= 10
+            }
+            onRunningChanged: {
+                dropArea.isScroll = running
+            }
+        }
+
+        function onRenameNewItem(){
+            sideListView.currentIndex = sideListView.model.count - 1;
+            sideListView.currentItem.enableRename();
+        }
+        function onRenamePlaylist(hash){
+            for(var i = sideModel.count - 1; i >= 0; i--){
+                if(hash === sideModel.get(i).uuid){
+                    sideListView.currentIndex = i;
+                    sideListView.currentItem.rename();
+                    break;
+                }
+            }
+        }
+        function onSwitchToPreviousPlaylist(previousIndex){
+            sideListView.currentIndex = previousIndex;
+            sideListView.currentItem.switchToPrevious();
+        }
+    }
+
+    property string pendingRemoveSongListHash: ""
+    Loader {
+        id: removeSongLoader
+        // The loaded dialog is a separate window; keep the Loader out of ColumnLayout sizing.
+        visible: false
+        onLoaded: {
+            if (!pendingRemoveSongListHash)
+                return
+
+            item.listHash = pendingRemoveSongListHash
+            pendingRemoveSongListHash = ""
+            item.show()
+        }
+        onStatusChanged: {
+            if (status === Loader.Error) {
+                pendingRemoveSongListHash = ""
+                console.warn("Failed to load delete playlist dialog")
+                source = ""
+            }
+        }
+    }
+
+    function showRemoveSong(listHash) {
+        pendingRemoveSongListHash = listHash
+        if (removeSongLoader.status === Loader.Null) {
+            removeSongLoader.setSource("qrc:/dialogs/DeleteSonglistDialog.qml", { "removeMusic": false })
+        } else if (removeSongLoader.status === Loader.Ready) {
+            removeSongLoader.item.listHash = pendingRemoveSongListHash
+            pendingRemoveSongListHash = ""
+            removeSongLoader.item.show()
+        }
+    }
+
+
+}

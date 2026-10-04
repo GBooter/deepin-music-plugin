@@ -1,0 +1,57 @@
+// SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+import QtQuick 2.0
+import QtQml 2.15
+import QtQuick.Layouts 1.11
+import QtQuick.Window 2.11
+import org.deepin.dtk 1.0
+
+
+DialogWindow {
+    id: dialog
+    minimumWidth: 400
+    height: 140
+    modality: Qt.ApplicationModal
+    color: Qt.rgba(247,247,247,0.80);
+    icon: globalVariant.appIconName
+    Binding on flags {
+        when: Qt.platform.os === "windows"
+        value: Qt.Dialog | Qt.WindowCloseButtonHint | Qt.MSWindowsFixedSizeDialogHint | Qt.FramelessWindowHint
+    }
+
+    onVisibleChanged: {
+        if (visible && Qt.platform.os === "windows") {
+            x = (Screen.width - width) / 2
+            y = (Screen.height - height) / 2
+        }
+    }
+
+    header: DialogTitleBar {
+        enableInWindowBlendBlur: false
+    }
+
+    ColumnLayout {
+        width: parent.width
+        Label {
+            id:deleteSongsLabel
+            Layout.preferredWidth: parent.width
+            Layout.alignment: Qt.AlignHCenter
+            font: DTK.fontManager.t5
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Qt.AlignHCenter
+            text: qsTr("The CD has been removed")
+        }
+
+        Button {
+            text: qsTr("Cancel")
+            Layout.preferredWidth: parent.width - 20
+            Layout.alignment: Qt.AlignHCenter
+            onClicked: {
+                dialog.close();
+            }
+        }
+    }
+}
+

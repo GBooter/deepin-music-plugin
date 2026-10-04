@@ -1,0 +1,481 @@
+// SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+import QtQuick 2.11
+import QtQuick.Window 2.11
+import QtQuick.Layouts 1.11
+import QtQuick.Controls 2.0
+import org.deepin.dtk 1.0
+import audio.global 1.0
+import "../allItems"
+import "../musicmousemenu"
+import "../dialogs"
+
+Rectangle {
+    property ListModel mediaModel
+    property string viewListHash: ""
+    property double scalingRatio: 168 / 810  //计算宽度占比
+    Loader { id: importMenuLoader }
+    Loader { id: moreMenuLoader }
+    Loader { id: selectMenuLoader }
+
+    id: musicListView
+    color: "transparent"
+    // 判断是否显示扩展列（Artist, Album）
+    property bool showExtendedColumns: musicListView.width > 500
+
+    // 定位当前播放歌曲悬浮按钮状态
+    property int playingIndex: -1
+    property bool locateBtnVisible: false
+
+    function updateLocateButton() {
+        playingIndex = -1
+        var hash = globalVariant.curPlayingHash
+        if (hash && mediaModel && mediaModel.count > 0) {
+            for (var i = 0; i < mediaModel.count; i++) {
+                if (mediaModel.get(i).hash === hash) {
+                    playingIndex = i
+                    break
+                }
+            }
+        }
+        if (playingIndex < 0 || !listview.visible) {
+            locateBtnVisible = false
+            return
+        }
+        var itemY = playingIndex * 56 + listview.originY
+        var viewTop = listview.contentY
+        var viewBottom = viewTop + listview.height
+        var scrollable = (mediaModel.count * 56) > listview.height
+        locateBtnVisible = scrollable
+                && (itemY < viewTop || itemY + 56 > viewBottom)
+    }
+
+    function locateCurrentPlaying() {
+        if (playingIndex < 0 || playingIndex >= mediaModel.count)
+            return
+        listview.positionViewAtIndex(playingIndex, ListView.Center)
+        updateLocateButton()
+    }
+
+    //标题栏
+    Row {
+        id: headerView
+        width: musicListView.width - 40; height: 36
+        leftPadding: 20
+        clip: true  // 防止内容溢出重叠
+        Rectangle {
+            width: 56; height: 36
+            color: "transparent"
+        }
+        Label {
+            // 窗口窄时，Title 列占据更多空间
+            width: showExtendedColumns 
+                   ? parent.width - 2 * parent.width * scalingRatio - 158
+                   : parent.width - 158
+            height: 36
+            leftPadding: 10
+            text: qsTr("Title")
+            verticalAlignment: Qt.AlignVCenter
+        }
+        Label {
+            width: parent.width * scalingRatio; height: 36
+            leftPadding: 10
+            text: qsTr("Artist")
+            verticalAlignment: Qt.AlignVCenter
+            visible: showExtendedColumns  // 窗口窄时隐藏
+        }
+        Label {
+            width: parent.width * scalingRatio; height: 36
+            text: qsTr("Album")
+            verticalAlignment: Qt.AlignVCenter
+            visible: showExtendedColumns  // 窗口窄时隐藏
+        }
+        Label {
+            width: 102; height: 36
+            text: qsTr("Duration")
+            verticalAlignment: Qt.AlignVCenter
+        }
+    }
+
+    function selectAll() {
+        if (listview && listview.visible && mediaModel.count > 0) {
+            listview.selectAll();
+        }
+    }
+
+    ListView {
+        property var delegateModelGroup: new Array
+        property var dragGroup: new Array
+        property int lastIndex: 0
+        property int dragToIndex: 0
+        property MusicInfoDialog infoDialog: MusicInfoDialog{musicData: listview.model.get(0)}
+
+        id: listview
+        width: parent.width
+        height: parent.height - 38
+        anchors.top: headerView.bottom;
+        ScrollBar.vertical: ScrollBar {}
+        model: mediaModel
+        clip: true
+        focus: true
+        visible: (mediaModel.count === 0) ? false : true
+        delegate: AllMusicListDelegate{
+            id: itemD
+            autoExclusive: false
+            width: listview.width - 40
+            height: 56
+            backgroundVisible: true
+            normalBackgroundVisible: index % 2 === 0
+            delegateListHash: viewListHash
+        }
+
+        property bool isShiftModifier: false;
+        property int keyChanged: 0; //如果方向改变,该值也会改变
+        Keys.onPressed: function(event) {
+            switch (event.key){
+            case Qt.Key_Up:
+                listview.lastIndex--;
+                if(isShiftModifier && keyChanged === 2) listview.lastIndex++
+                keyChanged = 1;
+                listview.keysShiftModifier();
+                break;
+            case Qt.Key_Down:
+                listview.lastIndex++;
+                if(isShiftModifier && keyChanged === 1) listview.lastIndex--
+                keyChanged = 2;
+                listview.keysShiftModifier();
+                break;
+            case Qt.Key_A:
+                if (event.modifiers & Qt.ControlModifier) {
+                    listview.selectAll();
+                }
+                break;
+            case Qt.Key_Shift:
+                listview.isShiftModifier = true;
+                break;
+            case Qt.Key_Delete:
+                listview.deleteSelectMusices();
+                break;
+            case Qt.Key_L:
+                if (event.modifiers & Qt.ControlModifier) {
+                    infoDialog.musicData = mediaModel.get(lastIndex);
+                    infoDialog.show();
+                }
+                break;
+            default:
+                break;
+            }
+            event.accepted = true;
+        }
+        Keys.onReleased: function(event) {
+            if(event.key === Qt.Key_Shift){
+                listview.isShiftModifier = false;
+            }
+        }
+
+        DeleteSonglistDialog {id: removeSong; listHash: viewListHash}
+
+        DropArea {
+            property int lastDragIndex: 0
+            property int toIndex: 0
+            property int hoverIndex: 0
+            property bool dragForSort: false
+
+            id: dropArea
+            anchors.fill: parent
+
+            onEntered: function(drag) {
+                dragForSort = false
+                for(var j = 0; j < drag.keys.length; j++) {
+                    // 检查两个键，因为 Drag.mimeData 可能只传递其中一个
+                    // 但只有在自定义排序模式下才允许拖拽排序
+                    if ((drag.keys[j] === "music-list/index-list" || drag.keys[j] === "music-list/hash-list") 
+                        && Presenter.playlistSortType(viewListHash) === DmGlobal.SortByCustom) {
+                        dragForSort = true
+                        break
+                    }
+                }
+
+                // 只有在自定义排序模式下才允许拖拽排序
+                if (Presenter.playlistSortType(viewListHash) === DmGlobal.SortByCustom
+                        && viewListHash !== "cdarole") {
+                    drag.accepted = true
+                } else {
+                    drag.accepted = false
+                }
+            }
+            onPositionChanged: function(drag) {
+                if (dragForSort) {
+                    updateHoverIndex(drag)
+                }
+
+                if (drag.y < 20 && !listview.atYBeginning) {
+                    scrollUpTimer.start()
+                } else {
+                    scrollUpTimer.stop()
+                }
+
+                if (drag.y > listview.height - 20 && !listview.atYEnd) {
+                    scrollDownTimer.start()
+                } else {
+                    scrollDownTimer.stop()
+                }
+            }
+            onDropped: function(drop) {
+                updateHoverIndex(drop)
+                
+                if (dragForSort) {
+                    scrollDownTimer.stop()
+                    scrollUpTimer.stop()
+
+                    // 处理 toIndex === -1 的情况（拖到列表顶部）
+                    var targetIndex = toIndex < 0 ? 0 : toIndex
+
+                    var hashList = []
+                    for (var i = 0; i < listview.delegateModelGroup.length; i++){
+                        hashList.push(mediaModel.get(listview.delegateModelGroup[i]).hash);
+                    }
+                    // 只有在自定义排序模式下才调用 Presenter.moveMetasPlayList
+                    if (Presenter.playlistSortType(viewListHash) === DmGlobal.SortByCustom) {
+                        if (targetIndex + 1 >= mediaModel.count) {
+                            Presenter.moveMetasPlayList(hashList, viewListHash, "")
+                        } else {
+                            Presenter.moveMetasPlayList(hashList, viewListHash, mediaModel.get(targetIndex + 1).hash)
+                        }
+                    }
+
+                    listview.delegateModelGroup.sort()
+
+                    var temp = 0
+                    var currentToIndex = targetIndex
+                    for (var i = 0; i < listview.delegateModelGroup.length; i++){
+                        var fromIndex = listview.delegateModelGroup[i]
+                        
+                        if (fromIndex <= currentToIndex) {
+                            // 从前往后移动，每移动一个后剩余的项下标就减1
+                            mediaModel.move(fromIndex - temp, currentToIndex, 1)
+                            temp++
+                        } else {
+                            // 从后往前移动，每移动一个后目标索引就会加1
+                            currentToIndex++
+                            mediaModel.move(fromIndex, currentToIndex, 1)
+                        }
+                        if (currentToIndex >= 0 && currentToIndex < mediaModel.count) {
+                            mediaModel.setProperty(currentToIndex, "inMulitSelect", false);
+                        }
+                        if (currentToIndex - 1 >= 0 && currentToIndex - 1 < mediaModel.count) {
+                            mediaModel.setProperty(currentToIndex - 1, "dragFlag", false);
+                        }
+                    }
+                    
+                    listview.removeModelGroup()
+                }
+                dragForSort = false
+                musicListView.updateLocateButton()
+            }
+            onExited: {
+                mediaModel.setProperty(lastDragIndex, "dragFlag", false)
+                scrollDownTimer.stop()
+                scrollUpTimer.stop()
+                dragForSort = false
+            }
+
+            function updateHoverIndex(drag) {
+                var contentY = listview.contentY || 0
+                hoverIndex = listview.indexAt(drag.x, drag.y + contentY)
+
+                if (hoverIndex >= 0) {
+                    var itemY = hoverIndex * 56
+                    if (drag.y + contentY < itemY + 56 / 2)
+                        hoverIndex--
+                }
+                
+                if (hoverIndex < 0)
+                    hoverIndex = -1
+
+                if (hoverIndex !== lastDragIndex) {
+                    if (hoverIndex >= 0 && hoverIndex < mediaModel.count)
+                        mediaModel.setProperty(hoverIndex, "dragFlag", true)
+                    if (lastDragIndex >= 0 && lastDragIndex < mediaModel.count)
+                        mediaModel.setProperty(lastDragIndex, "dragFlag", false)
+                }
+
+                toIndex = hoverIndex
+                lastDragIndex = hoverIndex
+                listview.dragToIndex = hoverIndex
+            }
+        }
+
+        Timer {
+            id: scrollDownTimer
+            interval: 40
+            repeat: true
+            running: false
+
+            onTriggered: {
+                if(!listview.atYEnd)
+                    listview.contentY += 10
+            }
+        }
+        Timer {
+            id: scrollUpTimer
+            interval: 40
+            repeat: true
+            running: false
+
+            onTriggered: {
+                if(!listview.atYBeginning)
+                    listview.contentY -= 10
+            }
+        }
+
+        function removeModelGroup(){
+            for(var i = delegateModelGroup.length - 1; i >= 0; i--){
+                mediaModel.setProperty(delegateModelGroup[i], "inMulitSelect", false);
+                delegateModelGroup.pop(i);
+                dragGroup.pop(i);
+            }
+        }
+        function keysShiftModifier(){
+            if(listview.lastIndex <= 0)
+                listview.lastIndex = 0;
+            if(listview.lastIndex >= mediaModel.count)
+                listview.lastIndex = mediaModel.count -1;
+            if(isShiftModifier){
+                var inMulitSelect = mediaModel.get(listview.lastIndex).inMulitSelect;
+                mediaModel.setProperty(listview.lastIndex, "inMulitSelect", (!inMulitSelect));
+                if((!inMulitSelect) === false){
+                    listview.delegateModelGroup.pop();
+                    listview.dragGroup.pop();
+                }else{
+                    listview.delegateModelGroup.push(listview.lastIndex);
+                    listview.dragGroup.push(mediaModel.get(listview.lastIndex).coverUrl)
+                }
+            }else{
+                listview.checkOne(listview.lastIndex);
+                listview.currentIndex = listview.lastIndex;
+            }
+        }
+        function checkOne(idx){
+            //console.log("checkOne......", idx)
+            listview.removeModelGroup();
+            mediaModel.setProperty(idx, "inMulitSelect", true);
+            listview.delegateModelGroup.push(idx);
+            listview.dragGroup.push(mediaModel.get(idx).coverUrl)
+            listview.lastIndex = idx;
+        }
+        function checkMulti(idx){
+            //console.log("checkMulti......", idx)
+            listview.removeModelGroup();
+            var beging = (listview.lastIndex >= idx) ? idx : listview.lastIndex
+            var end = (listview.lastIndex >= idx) ? listview.lastIndex: idx
+            for(var i = beging; i <= end; i++){
+                mediaModel.setProperty(i, "inMulitSelect", true);
+                listview.delegateModelGroup.push(i);
+                listview.dragGroup.push(mediaModel.get(i).coverUrl)
+            }
+            listview.lastIndex = idx;
+        }
+        function getSelectGroupHashList(){
+            var hashList = [];
+            for(var j = 0; j < listview.delegateModelGroup.length; j++){
+                if(mediaModel.get(listview.delegateModelGroup[j]).inMulitSelect){
+                    var tmpHash  = mediaModel.get(listview.delegateModelGroup[j]).hash;
+                    hashList.push(tmpHash);
+                    removeSong.musicTitle = mediaModel.get(listview.delegateModelGroup[j]).title;
+                }
+            }
+            return hashList;
+        }
+        function deleteSelectMusices(){
+            var tmpSelect = getSelectGroupHashList();
+            removeSong.deleteHashList = tmpSelect;
+            removeSong.show();
+        }
+
+        onVisibleChanged: {
+            //console.log("onVisibleChanged...................", viewListHash, "    ", visible)
+            if (!visible) {
+                for (var i = 0; i < delegateModelGroup.length; i++) {
+                    mediaModel.setProperty(delegateModelGroup[i], "inMulitSelect", false);
+                }
+                delegateModelGroup = []
+                dragGroup = []
+                globalVariant.currentSelectMediaMeta = null
+            }
+            musicListView.updateLocateButton()
+        }
+        onContentYChanged: {
+//            console.log("onContentYChanged..................")
+            if (dropArea.dragForSort)
+                dropArea.updateHoverIndex()
+            musicListView.updateLocateButton()
+        }
+        onHeightChanged: musicListView.updateLocateButton()
+
+        Connections {
+            target: globalVariant
+            function onClearSelectGroup() {
+                listview.removeModelGroup()
+            }
+            function onCurPlayingHashChanged() {
+                musicListView.updateLocateButton()
+            }
+        }
+
+        Connections {
+            target: mediaModel
+            function onCountChanged() {
+                musicListView.updateLocateButton()
+            }
+        }
+
+        function selectAll() {
+            listview.removeModelGroup();
+            for(var i = 0; i < mediaModel.count; i++) {
+                mediaModel.setProperty(i, "inMulitSelect", true);
+                listview.delegateModelGroup.push(i);
+                listview.dragGroup.push(mediaModel.get(i).coverUrl);
+            }
+            listview.lastIndex = mediaModel.count - 1;
+            listview.forceActiveFocus();
+        }
+    }
+
+    // 定位当前播放歌曲悬浮按钮，仅当当前播放歌曲不在列表可视区域时显示
+    FloatingButton {
+        id: locatePlayingBtn
+        anchors.right: parent.right
+        anchors.rightMargin: 24
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 16
+        width: 40
+        height: 40
+        visible: musicListView.locateBtnVisible
+        icon.name: "album"
+        icon.width: 20
+        icon.height: 20
+        ToolTip {
+            visible: locatePlayingBtn.hovered
+            text: qsTr("Locate current song")
+        }
+        onClicked: musicListView.locateCurrentPlaying()
+    }
+
+    Component.onCompleted: {
+        forceActiveFocus();
+        updateLocateButton();
+    }
+
+    Keys.onPressed: function(event) {
+        if (event.key === Qt.Key_A && event.modifiers & Qt.ControlModifier) {
+            listview.selectAll();
+            event.accepted = true;
+        } else if (event.key === Qt.Key_Delete) {
+            listview.deleteSelectMusices();
+            event.accepted = true;
+        }
+    }
+}
