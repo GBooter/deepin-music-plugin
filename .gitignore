@@ -43,3 +43,9 @@ build-runtimecheck/
 _toolchain/
 install.log
 report/
+
+# ===== 回收站（桌面环境垃圾，非项目内容）=====
+.Trash-0/
+
+# ===== 打包 DESTDIR 暂存目录（含已编译二进制，非源码）=====
+debian/deepin-music/
