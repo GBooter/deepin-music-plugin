@@ -34,7 +34,11 @@ CHANGELOG="$SCRIPT_DIR/../debian/changelog"
 [ -f "$CHANGELOG" ] || { echo "ERROR: 找不到 $CHANGELOG"; exit 1; }
 VERSION="$(sed -n '1s/.*(\([0-9.]*\)).*/\1/p' "$CHANGELOG")"
 [ -n "$VERSION" ] || { echo "ERROR: 无法从 $CHANGELOG 解析版本号"; exit 1; }
-ARCH="$(dpkg --print-architecture 2>/dev/null || echo amd64)"
+# 交叉编译时目标架构由 DEB_TARGET_ARCH 指定（如 loong64）；否则用宿主架构。
+TARGET_ARCH="${DEB_TARGET_ARCH:-$(dpkg --print-architecture 2>/dev/null || echo amd64)}"
+ARCH="$TARGET_ARCH"
+# 目标多架构 triple（定位库目录 / libswscale 等）：amd64→x86_64-linux-gnu，loong64→loongarch64-linux-gnu
+MULTIARCH="$(dpkg-architecture -a "$TARGET_ARCH" -qDEB_HOST_MULTIARCH 2>/dev/null || echo "${TARGET_ARCH}-linux-gnu")"
 
 # 暂存目录必须留有 >256M 空间：/tmp 在本机仅 10M tmpfs，装不下 38M 可执行 + 31M 共享库，
 # 且 CMake 的 file(INSTALL) 在空间不足时不报错退出，只会留下一个截断的暂存树。
@@ -54,7 +58,7 @@ echo "[2/6] 校验在线歌词功能确实在构建里"
 # 装出一个没有在线歌词的空壳是最难排查的失败模式，在打包阶段就拦住。
 # libdmusic 走 GNUInstallDirs，落在 lib/x86_64-linux-gnu/ 而非 lib/。
 LIB_SUBDIR=""
-for cand in lib/x86_64-linux-gnu lib64 lib; do
+for cand in "lib/$MULTIARCH" lib/x86_64-linux-gnu lib64 lib; do
     if [ -d "$STAGE/usr/$cand" ] && ls "$STAGE/usr/$cand"/libdmusic.so* >/dev/null 2>&1; then
         LIB_SUBDIR="$cand"
         break
